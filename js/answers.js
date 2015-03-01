@@ -6,13 +6,13 @@ var Answers = [
 		answer: "Herbert Matter", 
 		filename: "001.jpg"
 	},{
-		answer: "Joseph Müller-Brockmann", 
+		answer: "Josef Muller Brockmann", 
 		filename: "002.jpg"
 	},{
 		answer: "Shigeo Fukuda", 
 		filename: "003.jpg"
 	},{
-		answer: "Otl Aicher y Tomás Gonda", 
+		answer: "Otl Aicher y Tomas Gonda", 
 		filename: "004.jpg"
 	},{
 		answer: "David Carson", 
@@ -30,7 +30,7 @@ var Answers = [
 		answer: "Grapus", 
 		filename: "009.jpg"
 	},{
-		answer: "Joseph Müller-Brockmann", 
+		answer: "Josef Muller Brockmann", 
 		filename: "010.jpg"
 	},{
 		answer: "Armin Hoffmann", 
