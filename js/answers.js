@@ -1,48 +1,167 @@
 var Answers = [
 	{
 		answer: "Giovanni Pintori", 
-		filename: "000.jpg"
+		filename: "000.jpg",
+		birth_death: "1912–1999",
+		name: "Olivetti Elettrosumma 22",
+		year: "1956",
+		type: "Fotolitografía",
+		info: [
+			"Italia",
+			"Olivetti",
+			"Influencias de nueva tipografia y futurismo ligado a la grafica publicitaria",
+			"Italia tiene un modelo importado de diseño suizo, pero más latino;Modernidad",
+		],
+		links: [
+			"http://socks-studio.com/2013/12/10/dynamic-minimalism-olivetti-posters-by-giovanni-pintori/",
+			"https://www.flickr.com/photos/19855494@N00/sets/72157603713300507/detail/",
+			"http://www.italianways.com/giovanni-pintori-and-lettera-22-old-copy-modern-look/",
+		],
+		extra: [
+			"En 1936 Pintori ingresa a Olivetti al departamento gráfico, y aproximadamente por 30 años puso su sello original sobre las imagenes gráficas de la empresa.",
+			"Él buscaba resaltar la tecnológia del producto en relación con el usuario, y buscaba sintesis simplificadas para visualizar los mecanismos y procedimientos de los productos de Olivetti.",
+			"Construia configuraciones abstractas que sugerian la función del producto anunciado.",
+			"En algunos casos no aparece la fotografia, sino la metafora del producto, y a veces combinaba ambos produciendo dos niveles de información.",
+		],
 	},{
 		answer: "Herbert Matter", 
-		filename: "001.jpg"
+		filename: "001.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Josef Muller Brockmann", 
-		filename: "002.jpg"
+		filename: "002.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Shigeo Fukuda", 
-		filename: "003.jpg"
+		filename: "003.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Otl Aicher y Tomas Gonda", 
-		filename: "004.jpg"
+		filename: "004.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "David Carson", 
-		filename: "005.jpg"
+		filename: "005.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Shigeo Fukuda", 
-		filename: "006.jpg"
+		filename: "006.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Xanti Schawinsky", 
-		filename: "007.jpg"
+		filename: "007.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Giovanni Pintori", 
-		filename: "008.jpg"
+		filename: "008.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Grapus", 
-		filename: "009.jpg"
+		filename: "009.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Josef Muller Brockmann", 
-		filename: "010.jpg"
+		filename: "010.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Armin Hoffmann", 
-		filename: "011.jpg"
+		filename: "011.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Neville Brody", 
-		filename: "012.jpg"
+		filename: "012.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Max Huber", 
-		filename: "013.jpg"
+		filename: "013.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	},{
 		answer: "Armando Testa", 
-		filename: "014.jpg"
+		filename: "014.jpg",
+		birth_death: "",
+		name: "",
+		year: "",
+		type: "",
+		info: [],
+		links: [],
+		extra: [],
 	}
 ];

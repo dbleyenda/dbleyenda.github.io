@@ -62,11 +62,11 @@ var QuestionView = Backbone.Epoxy.View.extend({
 	},
 
 	checkKeyUp: function(event){
-
+	
 		// If "Enter" key
 		if(event.keyCode == 13){
 			this.onGetAnswerButtonClicked();
-	 	}
+		}
 
 	},
 

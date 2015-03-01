@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var answersCollection = new AnswersCollection( Answers ); // "Answers" variable is the array with answers located in js/answers.js
 
 	// Shuffle Collection
-	answersCollection.reset( answersCollection.shuffle(), {silent:true} );
+	// answersCollection.reset( answersCollection.shuffle(), {silent:true} );
 
 	// Instance of App View
 	var appView = new AppView({ 
