@@ -9,7 +9,6 @@ var AppView = Backbone.Epoxy.View.extend({
 
 	events: {
 		"click #id_nextButton": "nextQuestion",
-		"keyup #id_nextButton": "checkKeyUp",
 		"click #id_tryAgain": "reloadPage",
 	},
 
@@ -31,15 +30,6 @@ var AppView = Backbone.Epoxy.View.extend({
 		return this;
 	},
 
-	checkKeyUp: function(event){
-
-		// If "Enter" key
-		if(event.keyCode == 13){
-			this.nextQuestion();
-	 	}
-
-	},
-
 	showQuestion: function( position ){
 		var actualModel = this.collection.at( position );
 
@@ -52,23 +42,30 @@ var AppView = Backbone.Epoxy.View.extend({
 		});
 	},
 
-	nextQuestion: function(){
+	nextQuestion: function(event){
 
-		// Get next ID
-		var next = this.model.get('actual') + 1;
+		var self = this;
 
-		// If next question available
-		if( next < this.collection.length ){
+		// Added setTimeOut to prevent wrong focus when using "enter" on "Continue" Button
+		setTimeout(function(){
 			
-			this.model.set('actual', next);
-			this.render();
+			// Get next ID
+			var next = self.model.get('actual') + 1;
 
-		// Else, go to results
-		}else{
-			
-			this.finishGame();
+			// If next question available
+			if( next < self.collection.length ){
+				
+				self.model.set('actual', next);
+				self.render();
 
-		}
+			// Else, go to results
+			}else{
+				
+				self.finishGame();
+
+			}
+
+		}, 150);
 
 	},
 
