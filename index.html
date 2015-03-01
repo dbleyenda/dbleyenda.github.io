@@ -89,9 +89,12 @@
 
 		<header>
 			<h1>Memorizate ésta.</h1>
-			<p>Un juego para estudiar las imagenes para el final de Historia 2 Cátedra Gavito.</p>
-			<p class="text-muted">Respuestas correctas: <span data-bind="text:correct"><%= correct %></span> de <%= total %></span>.
+			<p>Un juego para estudiar las piezas gráficas del final de Historia 2 de Cátedra Gavito.</p>
 		</header>	
+
+		<hr>
+
+		<p class="text-muted">Respuestas correctas: <strong><span data-bind="text:correct"><%= correct %></span> de <%= total %></strong></span>.
 
 		<hr>
 
@@ -124,6 +127,8 @@
 				</div>
 
 			</div>
+
+			<hr>
 			
 			<!-- Correct Answer -->
 			<p class="result h4">La respuesta correcta es: <strong><%= answer %></strong> <span class="text-muted"><% if(birth_death != ""){%>(<%= birth_death %>)<%}%></span></p>
