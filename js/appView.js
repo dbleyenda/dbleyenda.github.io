@@ -9,7 +9,8 @@ var AppView = Backbone.Epoxy.View.extend({
 
 	events: {
 		"click #id_nextButton": "nextQuestion",
-		"click #id_tryAgain": "reloadPage"
+		"keyup #id_nextButton": "checkKeyUp",
+		"click #id_tryAgain": "reloadPage",
 	},
 
 	initialize: function(){
@@ -28,6 +29,15 @@ var AppView = Backbone.Epoxy.View.extend({
 		this.showQuestion( this.model.get('actual') );
 
 		return this;
+	},
+
+	checkKeyUp: function(event){
+
+		// If "Enter" key
+		if(event.keyCode == 13){
+			this.nextQuestion();
+	 	}
+
 	},
 
 	showQuestion: function( position ){

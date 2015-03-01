@@ -6,8 +6,8 @@ var QuestionView = Backbone.Epoxy.View.extend({
 	parentView: null,
 
 	events: {
- 		"click #id_getAnswerButton": "onGetAnswerButtonClicked", 
- 		"keyup #id_userAnswer": "checkKeyUp",
+		"click #id_getAnswerButton": "onGetAnswerButtonClicked", 
+		"keyup #id_userAnswer": "checkKeyUp",
 	},
 
 	initialize: function(options){
@@ -24,7 +24,11 @@ var QuestionView = Backbone.Epoxy.View.extend({
 
 	render: function(){
 
+		// Render Tempate
 		this.$el.html( this.template( this.model.toJSON() ) );
+
+		// Make Focus con first Input
+		this.$el.find('#id_userAnswer').focus();
 
 		var self = this;
 
@@ -61,8 +65,8 @@ var QuestionView = Backbone.Epoxy.View.extend({
 
 		// If "Enter" key
 		if(event.keyCode == 13){
-      this.onGetAnswerButtonClicked();
-   }
+			this.onGetAnswerButtonClicked();
+	 	}
 
 	},
 
@@ -82,9 +86,15 @@ var QuestionView = Backbone.Epoxy.View.extend({
 	},
 
 	showAnswer: function(){
+
+		// Show / Hide / Disable things
 		this.$el.find('#id_getAnswerButton').hide();
 		this.$el.find('#id_userAnswer').attr('disabled', 'disabled');
 		this.$el.find('#id_answerContainer').show();
+
+		// Make Focus on Continue button
+		this.$el.find('#id_nextButton').focus();
+
 	},
 
 	checkAnswer: function(){
