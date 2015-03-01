@@ -1,7 +1,6 @@
 var QuestionModel = Backbone.Model.extend({
 	
 	defaults: {
-		id: 0,
 		answer: "",
 		filename: "",
 		userAnswer: ""

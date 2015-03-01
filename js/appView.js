@@ -31,7 +31,7 @@ var AppView = Backbone.Epoxy.View.extend({
 	},
 
 	showQuestion: function( position ){
-		var actualModel = this.collection.get( position );
+		var actualModel = this.collection.at( position );
 
 		actualModel.set( 'correct', this.model.get('correct') );
 		actualModel.set( 'total', this.model.get('total') );
