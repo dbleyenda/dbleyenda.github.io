@@ -1,0 +1,134 @@
+var QuestionView = Backbone.Epoxy.View.extend({
+
+	el: "#id_questionContainer",
+
+	template: null,
+	parentView: null,
+
+	events: {
+ 		"click #id_getAnswerButton": "onGetAnswerButtonClicked", 
+ 		"keyup #id_userAnswer": "checkKeyUp",
+	},
+
+	initialize: function(options){
+
+		this.template = _.template( $("#id_questionTemplate").html() );
+		this.parentView = options.parentView;
+
+		// Bind model validation to view
+		Backbone.Validation.bind(this);	
+
+		this.render();
+
+	},
+
+	render: function(){
+
+		this.$el.html( this.template( this.model.toJSON() ) );
+
+		var self = this;
+
+		// Bind custom model validation callbacks
+		Backbone.Validation.bind(this, {
+			valid: function (view, attr, selector) {
+				self.setIndividualError(view.$('[name=' + attr + ']'), attr, '');
+			},
+			invalid: function (view, attr, error, selector) {
+				self.setIndividualError(view.$('[name=' + attr + ']'), attr, error);
+			}
+		});
+
+		return this;
+	},
+
+	setIndividualError: function(element, name, error){
+
+		// If not valid
+		if( error != ''){
+			element.parents('.form-group').addClass('has-error');
+			element.next('p.text-danger').remove();
+			element.after('<p class="text-danger">'+error+'</p>');
+
+		// If valid
+		}else{
+			element.parents('.form-group').removeClass('has-error');
+			element.next('p.text-danger').remove();
+		}
+
+	},
+
+	checkKeyUp: function(event){
+
+		// If "Enter" key
+		if(event.keyCode == 13){
+      this.onGetAnswerButtonClicked();
+   }
+
+	},
+
+	onGetAnswerButtonClicked: function(){
+
+		// If Model id valid
+		if(this.model.isValid(true)){
+
+			// Remove Click of Next button
+			this.undelegateEvents();
+
+			// Check Answer
+			this.checkAnswer();
+
+		}
+
+	},
+
+	showAnswer: function(){
+		this.$el.find('#id_getAnswerButton').hide();
+		this.$el.find('#id_userAnswer').attr('disabled', 'disabled');
+		this.$el.find('#id_answerContainer').show();
+	},
+
+	checkAnswer: function(){
+
+		// Compare Real Answer with User Answer
+		var answer = this.model.get('answer').toLowerCase(),
+			userAnswer = $.trim( this.model.get('userAnswer').toLowerCase() ),
+			valid = false;
+
+		// Check if partial terms are valid
+		var A = answer.split(' '),
+			UA = userAnswer.split(' ');
+
+		for(var i=0;i<UA.length;i++){
+			for( var j=0;j<A.length;j++ ){
+				if( UA[i] === A[j] ){
+					valid = true;
+					break;	
+				}					
+			}
+		}
+
+		// If "answer" is equal to "userAnswer" or if "valid" is true, User Answer is OK.
+		if( answer === userAnswer || valid ){
+
+			// Update Coorect Answer
+			var updateCorrectAnswers = this.parentView.model.get('correct') + 1;
+			this.model.set('correct', updateCorrectAnswers);
+			this.parentView.model.set('correct', updateCorrectAnswers);
+
+			// Show Ok Message
+			this.$el.find("#id_answerContainer .ok").show();
+
+		// Else, User Answer is wrong.
+		}else{
+			
+			// Show Wrong Message
+			this.$el.find("#id_answerContainer .wrong").show();
+
+		}
+		
+		// Show Answer
+		this.showAnswer();
+
+	},
+
+});

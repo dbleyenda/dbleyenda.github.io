@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+
+<title>Memorizate ésta - Estudiando para el final de Historia 2 Cátedra Gavito</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body id="id_appContainer">
+
+<!-- Main Content -->
+<div class="container">
+
+	<section id="id_questionContainer"></section>
+
+	<hr>
+
+	<!-- Footer -->
+	<footer>
+		<div class="row">
+			<div class="col-md-10">
+				<p>Marzo 2015. Autor: Ignacio Sans. Github: <a href="https://github.com/dbleyenda">dbleyenda</a>. Carrera de Diseño Gráfico. FADU. UBA. Buenos Aires. Argentina.</p>
+			</div>
+			<div class="col-md-2">
+				<p><a href="http://www.ideaslocomotoras.com" target="_blank">ideaslocomotoras.com</a></p>
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Results Modal -->
+<div id="id_resultsModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Fin del juego</h4>
+			</div>
+			<div class="modal-body">
+				<h4>Respondiste correctamente <span id="id_correctAnswers"></span> de <span id="id_totalQuestions"></span>.</h4>
+				<p id="id_finalMessage"></p>
+				<p>¡Gracias por jugar! Pasalo a tus compañeros, es más divertido estudiar jugando.</p>
+				<p><br>Y si te gusto, ¡compartilo!</p>
+				<div class="share">
+
+					<!-- Facebook -->
+					<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+
+					<!-- Twitter -->
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="dbleyenda" data-hashtags="Gavito2">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+					<!-- Google Plus -->
+					<div class="g-plusone" data-size="medium"></div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="id_tryAgain" class="btn btn-primary" title="Intentar de nuevo">Intentarlo de nuevo</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Backbone Templates -->
+<script type="text/template" id="id_questionTemplate">
+<div class="row">
+
+	<!-- Image -->
+	<div class="col-md-6" id="id_imageColumn">
+		<figure>	
+			<img src="img/<%= filename %>"/>
+		</figure>
+	</div>
+
+	<!-- Form -->
+	<div class="col-md-6" id="id_formColumn">		
+
+		<header>
+			<h1>Memorizate ésta.</h1>
+			<p>Un juego para estudiar las imagenes para el final de Historia 2 Cátedra Gavito.</p>
+			<p class="text-muted">Respuestas correctas: <span data-bind="text:correct"><%= correct %></span> de <%= total %></span>.
+		</header>	
+
+		<hr>
+
+		<div class="form-group">
+			<label for="id_userAnswer">Escribe el nombre y/o el apellido de el/los de los autor/es de la pieza:</label>
+			<input type="text" class="form-control" name="userAnswer" id="id_userAnswer" placeholder="Ésta pieza es de..." data-bind="value:userAnswer,events:['keyup']" />
+		</div>
+
+		<button class="btn btn-default" id="id_getAnswerButton" title="Ver respuesta">Ver respuesta</button>
+
+		<div id="id_answerContainer" style="display:none;">
+			<p class="h4 bg-success ok" style="display:none;"><span class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span> Bien! Le pegaste!</p>
+			<p class="h4 bg-danger wrong" style="display:none;"><span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span> Segui estudiando.</p>
+			<p class="result">La respuesta correcta es: <strong><%= answer %></strong></p>
+			<button class="btn btn-primary" id="id_nextButton" title="Continuar">Continuar</button>
+		</div>
+
+	</div>
+
+</div>
+</script>
+
+
+<!-- JS Vendor -->
+<script type="text/javascript"src="js/vendor/jquery.min.js"></script>
+<script type="text/javascript"src="js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript"src="js/vendor/underscore.min.js"></script>
+<script type="text/javascript"src="js/vendor/backbone.min.js"></script>
+<script type="text/javascript"src="js/vendor/backbone.epoxy.min.js"></script>
+<script type="text/javascript"src="js/vendor/backbone.validation.min.js"></script>
+
+<!-- App JS -->
+<script type="text/javascript" src="js/answers.js"></script>
+<script type="text/javascript" src="js/questionModel.js"></script>
+<script type="text/javascript" src="js/answersCollection.js"></script>
+<script type="text/javascript" src="js/questionView.js"></script>
+<script type="text/javascript" src="js/appModel.js"></script>
+<script type="text/javascript" src="js/appView.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<!-- Google Plus -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+	{lang: 'es-419'}
+</script>
+
+</body>
+</html>
