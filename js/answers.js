@@ -10,7 +10,8 @@ var Answers = [
 			"Italia",
 			"Olivetti",
 			"Influencias de nueva tipografia y futurismo ligado a la grafica publicitaria",
-			"Italia tiene un modelo importado de diseño suizo, pero más latino;Modernidad",
+			"Italia tiene un modelo importado de diseño suizo, pero más latino",
+			"Modernidad",
 		],
 		links: [
 			"http://socks-studio.com/2013/12/10/dynamic-minimalism-olivetti-posters-by-giovanni-pintori/",
