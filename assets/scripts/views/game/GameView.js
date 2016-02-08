@@ -27,6 +27,9 @@ define([
 
 		initialize: function(){
 
+			// Show Loading
+			this.mask('#id_loadingMask', 'show');
+
 			// Init Answers Collection
 			this.collection = new AnswersCollection;
 
@@ -58,6 +61,9 @@ define([
 
 					// Render first question
 					this.render();
+
+					// Hide Loading
+					this.mask('#id_loadingMask', 'hide');
 
 				}, this), 
 
@@ -137,6 +143,14 @@ define([
 
 		reloadPage: function(){
 			location.reload();
+		},
+
+		mask: function(id, action){
+			if( action == 'show' ){
+				$(id).css('display','table');
+			}else if( action == 'hide' ){
+				$(id).css('display','none');
+			}
 		},
 
 	});

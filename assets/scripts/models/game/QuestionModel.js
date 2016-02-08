@@ -2,7 +2,8 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone'
+	'backbone',
+	'backbone_validation'
 ], function($, _, Backbone){
 
 	var QuestionModel = Backbone.Model.extend({

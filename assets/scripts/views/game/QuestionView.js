@@ -44,16 +44,14 @@ define([
 			// Make Focus con first Input
 			this.$el.find('#id_userAnswer').focus();
 
-			var self = this;
-
 			// Bind custom model validation callbacks
 			Backbone.Validation.bind(this, {
-				valid: function (view, attr, selector) {
-					self.setIndividualError(view.$('[name=' + attr + ']'), attr, '');
-				},
-				invalid: function (view, attr, error, selector) {
-					self.setIndividualError(view.$('[name=' + attr + ']'), attr, error);
-				}
+				valid: _.bind(function (view, attr, selector) {
+					this.setIndividualError(view.$('[name=' + attr + ']'), attr, '');
+				}, this),
+				invalid: _.bind(function (view, attr, error, selector) {
+					this.setIndividualError(view.$('[name=' + attr + ']'), attr, error);
+				}, this),
 			});
 
 		},
