@@ -3,28 +3,26 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'models/admin/ArrayModel',
 	'backbone_validation',
 	'backbone_epoxy',
-], function($, _, Backbone){
+], function($, _, Backbone, ArrayModel){
 
-	var LinksModel = Backbone.Epoxy.Model.extend({
+	var LinksModel = ArrayModel.extend({
 
 		defaults: {
 			links: null
 		},
 
-		validation: {
-			links: [
-				{
-					required: true,
-					msg: "Campo obligatorio. No puede agregar un link vacío."
-				},{
-					pattern: "url",
-					msg: "El texto ingresado debe ser una url"
-				}
-			],
+		validation: {
+			links: [{
+				required: true,
+				msg: "Campo obligatorio. No puede agregar un link vacío."
+			},{
+				pattern: "url",
+				msg: "El texto ingresado debe ser una url"
+			}]
 		},
-
 
 	});
 

@@ -3,25 +3,25 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'models/admin/ArrayModel',
 	'backbone_validation',
 	'backbone_epoxy',
-], function($, _, Backbone){
+], function($, _, Backbone, ArrayModel){
 
-	var ExtraModel = Backbone.Epoxy.Model.extend({
+	var ExtraModel = ArrayModel.extend({
 
 		defaults: {
 			extra: null
 		},
 
-		validation: {
+		validation: {
 			extra: [
 				{
 					required: true,
 					msg: "Campo obligatorio. No puede agregar más información vacía."
-				},
-			],
+				}
+			]
 		},
-
 
 	});
 

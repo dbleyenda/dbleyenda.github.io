@@ -13,6 +13,7 @@ define([
 
 		events: {
 			'click .addButton': 'onAddButtonClicked',
+			'keyup #info, #links, #extra': 'checkKeyUp',
 		},
 
 		initialize: function(){
@@ -60,38 +61,38 @@ define([
 		
 		onAddButtonClicked: function(event){
 
-			// prevent default
-			event.preventDefault();
+			this.model.unset('item');
 
 			// If Model id valid
 			if(this.model.isValid(true)){
+
+				if( !_.isUndefined(this.model.get('info')) ){
+					item = this.model.get('info');
+					this.model.unset('info');
+					this.model.set('item', item);
+				}
+
+				if( !_.isUndefined(this.model.get('links')) ){
+					item = this.model.get('links');
+					this.model.unset('links');
+					this.model.set('item', item);
+				}
+
+				if( !_.isUndefined(this.model.get('extra')) ){
+					item = this.model.get('extra');
+					this.model.unset('extra');
+					this.model.set('item', item);
+				}
 
 				this.collection.add( this.model.toJSON() );
 
 				this.$el.find('.field').val('');
 
 			}
+
 		},
 
 		addItem: function(model){
-
-			if( !_.isUndefined(model.get('info')) ){
-				item = model.get('info');
-				model.unset('info');
-				model.set('item', item);
-			}
-
-			if( !_.isUndefined(model.get('links')) ){
-				item = model.get('links');
-				model.unset('links');
-				model.set('item', item);
-			}
-
-			if( !_.isUndefined(model.get('extra')) ){
-				item = model.get('extra');
-				model.unset('extra');
-				model.set('item', item);
-			}
 
 			// Add new item to DOM
 			var itemView = new ItemView({ 
@@ -99,6 +100,40 @@ define([
 			});
 			this.$el.find('.itemsAdded').append( itemView.render().el );
 		},
+
+		checkKeyUp: function(event){
+
+			// If "Enter" or "Comma" keys
+			if(event.keyCode == 13 || event.keyCode == 188){
+
+				if( event.keyCode == 188 ){
+
+					// Remove comma from field
+					var item = this.$el.find('.field').val().slice(0,-1);
+
+					// Set again in field without comma
+					this.$el.find('.field').val(item);
+
+					// If info, set model
+					if( !_.isUndefined(this.model.get('info')) ){
+						this.model.set('info', item);
+					}
+
+					// If links, set model
+					if( !_.isUndefined(this.model.get('links')) ){
+						this.model.set('links', item);
+					}
+
+					// If extra, set model
+					if( !_.isUndefined(this.model.get('extra')) ){
+						this.model.set('extra', item);
+					}
+
+				}
+
+				this.onAddButtonClicked();
+			}
+		}
 
 	});
 

@@ -30,31 +30,30 @@ define([
 			// Show Loading
 			this.mask('#id_loadingMask', 'show');
 
+			// Init model
+			this.model = new GameModel;
+
 			// Init Answers Collection
 			this.collection = new AnswersCollection;
 
 			// Fetch Data
 			this.collection.fetch({ 
 
-				//reset: true,
-
 				// On Success
-				success: _.bind(function (collection, response, options) {
+				success: _.bind(function(collection, response, options){
 
-					//console.log(collection, response, options);
+					// Shuffle Answers to give some complexity
+					var shuffledAnswers = _.shuffle( this.collection.toJSON() );
 
-					//console.log(collection.toJSON());
+					// Change id from shuffled answers to reset collection properly.
+					_.each( shuffledAnswers, function(value, index){ value.id = index; });
 
-					//console.log( this.collection.toJSON()[0].answer );
+					// Reset collection with shuffled answers
+					this.collection.reset( shuffledAnswers, {silent:true} );
 
-					// SHUFFLE DIDN'T WORK WITH FIREBASE IMPLEMENTATION =(
-					// KEEP SEARCHING FOR SOLUTION
-					//collection.reset( collection.shuffle(), {silent:true} );
-
-					//console.log( this.collection.toJSON()[0].answer );
-
-					// Init model
-					this.model = new GameModel;
+					// FOR TEST PURPOUSES: Shift collection and leave 1 model.
+					//this.collection.reset( this.collection.shift(), {silent:true} );
+					//console.log(this.collection.toJSON());
 
 					// Set Total Questions
 					this.model.set('total', collection.length);
@@ -82,12 +81,6 @@ define([
 
 			// Show question
 			this.showQuestion( this.model.get('actual') );
-
-			// Compile template
-			var compiledTemplate = _.template( resultsTemplate, this.model.toJSON() );
-			
-			// Render template
-			this.$el.append( compiledTemplate );
 
 		},
 
@@ -131,6 +124,12 @@ define([
 		},
 
 		finishGame: function(){
+
+			// Compile template
+			var compiledTemplate = _.template( resultsTemplate );
+			
+			// Render template
+			this.$el.append( compiledTemplate( this.model.toJSON() ) );
 
 			// Open Results Modal
 			this.$el.find('#id_resultsModal').modal({

@@ -139,11 +139,6 @@ define([
 		
 		onSaveButtonClicked: function(event){
 
-			// prevent default
-			event.preventDefault();
-
-			console.log(this.model.toJSON());
-
 			// If Model id valid
 			if(this.model.isValid(true)){
 

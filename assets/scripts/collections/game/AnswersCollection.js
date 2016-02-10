@@ -10,7 +10,7 @@ define([
 
 	var AnswersCollection = Backbone.Firebase.Collection.extend({
 		model: QuestionModel,
-		url: 'https://luminous-inferno-7458.firebaseio.com/answers',
+		url: 'https://luminous-inferno-7458.firebaseio.com/answers/',
 		autoSync: false
 	});
 
