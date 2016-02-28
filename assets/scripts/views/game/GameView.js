@@ -152,6 +152,20 @@ define([
 			}
 		},
 
+		close: function(){
+			console.log('close Game');
+			this.destroy();
+		},
+
+		destroy: function(){
+
+			// UndelegateEvents
+			this.undelegateEvents();
+
+			// TODO checkear como remover la view
+
+		},
+
 	});
 
 	return GameView;

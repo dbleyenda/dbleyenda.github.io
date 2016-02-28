@@ -101,7 +101,7 @@
 				<hr>
 
 				<div class="buttons text-center">
-					<input class="btn btn-primary btn-lg" type="submit" value="<% if( id != null ){ %>Actualizar<% }else{ %>Guardar<% } %>" id="id_saveButton">
+					<input class="btn btn-primary btn-lg" type="submit" value="<% if( id != null ){ %>Actualizar<% }else{ %>Guardar<% } %>" id="<% if( id != null ){ %>id_updateButton<% }else{ %>id_saveButton<% } %>">
 				</div>
 
 			</div>

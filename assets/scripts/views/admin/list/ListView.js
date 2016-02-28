@@ -140,7 +140,21 @@ define([
 			}else{
 				// Cancel delete. Do nothing.
 			}
-		}
+		},
+
+		close: function(){
+			console.log('close List');
+			this.destroy();
+		},
+
+		destroy: function(){
+
+			// UndelegateEvents
+			this.undelegateEvents();
+
+			// TODO checkear como remover la view
+
+		},
 
 	});
 

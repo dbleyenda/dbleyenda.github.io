@@ -23,7 +23,7 @@ define([
 		editMode: false,
 
 		events: {
-			'click #id_saveButton': 'onSaveButtonClicked',
+			'click #id_saveButton, #id_updateButton': 'onSaveButtonClicked',
 		},
 
 		initialize: function(options){
@@ -197,6 +197,8 @@ define([
 		
 		onSaveButtonClicked: function(event){
 
+			console.log('entro');
+
 			//TODO: No pude hacer que en el edit, se actualice el model usando Epoxy. Hay algo que se me esta escapando de las manos. Por eso hago esto que debo quitar en algun futuro
 			if( this.editMode ){
 				this.model.set({
@@ -319,18 +321,21 @@ define([
 			}
 		},
 
+		close: function(){
+			if( this.editMode ){
+				console.log('close Edit');
+			}else{
+				console.log('close Add');
+			}
+			this.destroy();
+		},
+
 		destroy: function(){
 
-			// TODO: Necesito entender mejor como manejar estas cosas. Por ahora dejo lo que encontre en internet. Algunas cosas las comente porque me rompian la App.
-
-			// COMPLETELY UNBIND THE VIEW
+			// UndelegateEvents
 			this.undelegateEvents();
 
-			this.$el.removeData().unbind(); 
-
-			// Remove view from DOM
-			//this.remove();
-			//Backbone.View.prototype.remove.call(this);
+			// TODO checkear como remover la view
 
 		}
 
