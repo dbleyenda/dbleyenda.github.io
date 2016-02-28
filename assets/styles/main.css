@@ -1,15 +1,24 @@
 /* General */
-body{padding-top:50px;padding-bottom:20px;}
+.container{padding-top:50px;padding-bottom:20px;}
 
-/* Game */
-#id_imageColumn img{margin-bottom:20px;max-width:100%;}
-#id_answerContainer .ok,
-#id_answerContainer .wrong{padding:10px;border-radius:5px;}
+/* Sticky Footer */
+html, 
+body{height:100%;padding:0;}
+.appPage{min-height:100%;margin-bottom:-80px;}
+.appPage:after{content:"";display:block;}
+#id_footer,
+.appPage:after{height:80px;}
+#id_footer{overflow:hidden;}
 
 /* Loading */
 .loading{position:fixed;top:0;left:0;background:rgba(255,255,255,.9);z-index:200;width:100%;height:100%;display:table;}
 .loading > div{display:table-row;height:100%;}
 .loading > div > div{display:table-cell;vertical-align:middle;height:100%;}
+
+/* Game */
+#id_imageColumn img{margin-bottom:20px;max-width:100%;}
+#id_answerContainer .ok,
+#id_answerContainer .wrong{padding:10px;border-radius:5px;}
 
 /* Admin */
 
