@@ -55,9 +55,6 @@ define([
 					// Set values
 					this.model.set( snapshot.val() );
 
-					// Set Edit ID
-					//this.model.set('editID', options.id);
-
 					// Hide Loading
 					this.mask('#id_loadingMask', 'hide');
 
@@ -188,16 +185,9 @@ define([
 				}
 			});
 
-			// Reset Collections
-			// this.InfoCollection.reset();
-			// this.LinksCollection.reset();
-			// this.ExtraCollection.reset();
-
 		},
 		
 		onSaveButtonClicked: function(event){
-
-			console.log('entro');
 
 			//TODO: No pude hacer que en el edit, se actualice el model usando Epoxy. Hay algo que se me esta escapando de las manos. Por eso hago esto que debo quitar en algun futuro
 			if( this.editMode ){
@@ -232,8 +222,8 @@ define([
 					var ref = new Firebase("https://luminous-inferno-7458.firebaseio.com/answers/");
 					ref.once("value", _.bind(function(snapshot) {
 
-						// Set id as Answers Length
-						this.model.set( 'id', snapshot.numChildren() );
+						// Set id = ( Last answer id + 1 )
+						this.model.set( 'id', ( ( snapshot.val()[ (snapshot.val().length - 1) ].id ) + 1 ) );
 
 						// Save
 						this.save();
