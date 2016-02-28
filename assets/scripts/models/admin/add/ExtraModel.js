@@ -10,8 +10,8 @@ define([
 
 	var ExtraModel = ArrayModel.extend({
 
-		initialize: function(){
-			this.defaults['extra'] = null;
+		defaults: {
+			extra: null
 		},
 
 		validation: {

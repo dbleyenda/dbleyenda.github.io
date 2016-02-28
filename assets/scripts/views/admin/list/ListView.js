@@ -32,11 +32,29 @@ define([
 				// On Success
 				success: _.bind(function(collection, response, options){
 
-					// Render first question
-					this.render();
+					// // Need to get edit ID					
+					// var ref = collection.firebase;
+					// ref.once("value", _.bind(function(snapshot) {
 
-					// Hide Loading
-					this.mask('#id_loadingMask', 'hide');
+					// 	// Get keys as edit ID
+					// 	var keys = _.keys( snapshot.val() ),
+					// 		collectionWithEditId = this.collection.toJSON();
+
+					// 	// Set KeyID to each model in collection
+					// 	_.each(collectionWithEditId, _.bind(function( answer, index ){
+					// 		answer['editId'] = keys[index];
+					// 	}, this));
+
+					// 	// Reset collection with new attributes
+					// 	this.collection.reset( collectionWithEditId, {silent:true} );
+
+						// Render
+						this.render();
+
+						// Hide Loading
+						this.mask('#id_loadingMask', 'hide');
+
+					//}, this));
 
 				}, this), 
 

@@ -17,10 +17,6 @@ define([
 			'click .removeButton': 'onRemoveButtonClicked'
 		},
 
-		initialize: function(){
-			this.render();
-		},
-
 		render: function(){
 			// Compile template
 			var compiledTemplate = _.template( itemTemplate );
@@ -32,11 +28,13 @@ define([
 		},
 
 		onRemoveButtonClicked: function(event){
+
 			// Remove from DOM
 			$(event.currentTarget).parents('.'+this.className).remove();
 
 			// Remove from colelction
-			this.model.collection.remove( this.model.collection.get( this.model.cid ) );
+			this.collection.remove( this.collection.get( this.model.cid ) );
+
 		}
 
 	});

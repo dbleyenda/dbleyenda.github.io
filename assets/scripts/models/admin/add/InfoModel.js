@@ -10,8 +10,8 @@ define([
 
 	var InfoModel = ArrayModel.extend({
 
-		initialize: function(){
-			this.defaults['info'] = null;
+		defaults: {
+			info: null
 		},
 
 		validation: {

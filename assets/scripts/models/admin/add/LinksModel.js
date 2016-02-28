@@ -10,8 +10,8 @@ define([
 
 	var LinksModel = ArrayModel.extend({
 
-		initialize: function(){
-			this.defaults['links'] = null;
+		defaults: {
+			links: null
 		},
 
 		validation: {
