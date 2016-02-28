@@ -32,29 +32,11 @@ define([
 				// On Success
 				success: _.bind(function(collection, response, options){
 
-					// // Need to get edit ID					
-					// var ref = collection.firebase;
-					// ref.once("value", _.bind(function(snapshot) {
+					// Render
+					this.render();
 
-					// 	// Get keys as edit ID
-					// 	var keys = _.keys( snapshot.val() ),
-					// 		collectionWithEditId = this.collection.toJSON();
-
-					// 	// Set KeyID to each model in collection
-					// 	_.each(collectionWithEditId, _.bind(function( answer, index ){
-					// 		answer['editId'] = keys[index];
-					// 	}, this));
-
-					// 	// Reset collection with new attributes
-					// 	this.collection.reset( collectionWithEditId, {silent:true} );
-
-						// Render
-						this.render();
-
-						// Hide Loading
-						this.mask('#id_loadingMask', 'hide');
-
-					//}, this));
+					// Hide Loading
+					this.mask('#id_loadingMask', 'hide');
 
 				}, this), 
 
@@ -136,9 +118,49 @@ define([
 
 			// Ask for confirmation on delete.
 			if(confirmDelete){
-				// Confirm delete
+
+				this.mask('#id_loadingMask', 'show');
+
+				var answerDeleteRef = new Firebase("https://luminous-inferno-7458.firebaseio.com/answers/"+idToRemove+"/");
+
+				answerDeleteRef.authWithCustomToken("K2IIPKYNYXORvW9qVOXpLAu5uBIJFuPSXujJP6in", _.bind(function(error, result) {
+					this.mask('#id_loadingMask', 'hide');
+					if(error){
+						console.log("Authentication Failed!", error);
+					}else{
+						answerDeleteRef.set( null, this.onDelete(question) );
+					}
+				}, this));
 			}else{
 				// Cancel delete. Do nothing.
+			}
+		},
+
+		onDelete: function(question, error){
+			if(error){
+				console.log("Error al eliminar: ", error);
+			}else{
+
+				// Remove card from dom.
+				this.$el.find('#id_questionsGrid .card[data-id='+question['id']+']').remove();
+
+				// Remove TR from dom.
+				this.$el.find('#id_questionsTable tr[data-id='+question['id']+']').remove();
+
+				// Texto de OK
+				var text = 'La pregunta "';
+				text += question['answer'];
+				if( 
+					!_.isUndefined( question['name'] ) && 
+					question['name'] != '' 
+				){
+					text += ' - ';
+					text += question['name'];
+				}
+				text += '" ha sido eliminada.';
+
+				// Muestro texto OK
+				alert(text);
 			}
 		},
 

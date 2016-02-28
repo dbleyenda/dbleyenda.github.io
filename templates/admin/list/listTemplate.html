@@ -37,7 +37,7 @@
 				
 					<!-- Iterate questions and generate a table with them -->
 					<% _.each(questions, function (question, index) { %>
-						<div class="col-md-4 card">
+						<div class="col-md-4 card" data-id="<%= question['id'] %>">
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="image">
@@ -86,7 +86,7 @@
 					<tbody>
 						<!-- Iterate questions and generate a table with them -->
 						<% _.each(questions, function (question, index) { %>
-							<tr>
+							<tr data-id="<%= question['id'] %>">
 								<td class="image">
 									<figure>	
 										<img src="assets/images/game/<%= question['filename'] %>"/>
@@ -105,8 +105,8 @@
 
 									<!-- Actions -->
 									<ul class="actions list-inline">
-										<li class="edit"><a href="#/edit/<%=question['id']%>">Editar</a></li>
-										<li class="remove"><a data-id="<%=question['id']%>" class="text-danger">Eliminar</a></li>
+										<li><a href="#/edit/<%=question['id']%>" class="edit">Editar</a></li>
+										<li><a data-id="<%=question['id']%>" class="remove text-danger">Eliminar</a></li>
 									</ul>
 								</td>
 							</tr>
