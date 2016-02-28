@@ -57,7 +57,7 @@ define([
 			var compiledTemplate = _.template( listTemplate );
 
 			// Render template
-			this.$el.html( compiledTemplate( {questions: this.collection.toJSON()} ) );
+			this.$el.html( compiledTemplate( {questions: this.collection.toJSON().reverse()} ) );
 
 		},
 
