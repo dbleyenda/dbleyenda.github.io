@@ -14,7 +14,8 @@ define([
 		el: "#id_sectionContainer",
 
 		events: {
-			'click .toolbar .btn': 'onToolbarButtonClicked'
+			'click .toolbar .btn': 'onToolbarButtonClicked',
+			'click .remove': 'onRemoveButtonClicked'
 		},
 
 		initialize: function(){
@@ -90,6 +91,37 @@ define([
 			// Load List Option
 			$(optionToLoad).show();
 
+		},
+
+		onRemoveButtonClicked: function(event){
+			
+			event.preventDefault();
+
+			var idToRemove = $(event.currentTarget).attr('data-id'),
+				question = this.collection.get(idToRemove).toJSON(),
+				text = '';
+
+			// Set up confirm text
+			text += '¿Desea eliminar la pregunta "';
+			text += question['answer'];
+			if( 
+				!_.isUndefined( question['name'] ) && 
+				question['name'] != '' 
+			){
+				text += ' - ';
+				text += question['name'];
+			}
+			text += '"?';
+
+			// Set up confirm dialog
+			var confirmDelete = confirm(text);
+
+			// Ask for confirmation on delete.
+			if(confirmDelete){
+				// Confirm delete
+			}else{
+				// Cancel delete. Do nothing.
+			}
 		}
 
 	});
