@@ -153,7 +153,6 @@ define([
 		},
 
 		close: function(){
-			console.log('close Game');
 			this.destroy();
 		},
 

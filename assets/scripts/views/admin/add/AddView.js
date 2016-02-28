@@ -312,11 +312,6 @@ define([
 		},
 
 		close: function(){
-			if( this.editMode ){
-				console.log('close Edit');
-			}else{
-				console.log('close Add');
-			}
 			this.destroy();
 		},
 

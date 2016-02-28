@@ -165,7 +165,6 @@ define([
 		},
 
 		close: function(){
-			console.log('close List');
 			this.destroy();
 		},
 
