@@ -4,14 +4,18 @@ define([
 	'underscore',
 	'backbone',
 	'views/game/GameView',
-	'views/admin/AdminView',
+	'views/admin/add/AddView',
+	'views/admin/list/ListView',
 	'views/FooterView'
-], function($, _, Backbone, GameView, AdminView, FooterView){
+], function($, _, Backbone, GameView, AddView, ListView, FooterView){
 
 	var AppRouter = Backbone.Router.extend({
 		routes: {
-			// Admin
-			'admin': 'showAdmin',
+			// List Questions
+			'list': 'listQuestions',
+
+			// Add Question
+			'add': 'addQuestion',
 			
 			// Default - Game
 			'*actions': 'defaultAction'
@@ -22,16 +26,19 @@ define([
 		
 		var app_router = new AppRouter;
 		
-		// Admin
-		app_router.on('route:showAdmin', function(){
-			var adminView = new AdminView();
-			//adminView.render();
+		// List Questions
+		app_router.on('route:listQuestions', function(){
+			var listView = new ListView();
+		});
+
+		// Add Question
+		app_router.on('route:addQuestion', function(){
+			var addView = new AddView();
 		});
 
 		// Default
 		app_router.on('route:defaultAction', function(actions){
 			var gameView = new GameView();
-			//gameView.render();
 		});
 
 		// Footer

@@ -1,22 +1,22 @@
-// Filename: views/admin/AdminView
+// Filename: views/admin/add/AddView
 define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/admin/AdminModel',
-	'models/admin/InfoModel',
-	'models/admin/LinksModel',
-	'models/admin/ExtraModel',
-	'views/admin/ArrayView',
-	'collections/admin/ArrayCollection',
-	'text!templates/admin/adminTemplate.html',
+	'models/QuestionModel',
+	'models/admin/add/InfoModel',
+	'models/admin/add/LinksModel',
+	'models/admin/add/ExtraModel',
+	'views/admin/add/ArrayView',
+	'collections/admin/add/ArrayCollection',
+	'text!templates/admin/add/addTemplate.html',
 	'firebase',
 	'bootstrap',
 	'backbone_epoxy',
 	'backbone_validation',
-], function($, _, Backbone, AdminModel, InfoModel, LinksModel, ExtraModel, ArrayView, ArrayCollection, adminTemplate){
+], function($, _, Backbone, QuestionModel, InfoModel, LinksModel, ExtraModel, ArrayView, ArrayCollection, addTemplate){
 
-	var AdminView = Backbone.Epoxy.View.extend({
+	var AddView = Backbone.Epoxy.View.extend({
 
 		el: "#id_sectionContainer",
 
@@ -30,7 +30,7 @@ define([
 			this.mask('#id_loadingMask', 'show');
 
 			// Init model
-			this.model = new AdminModel;
+			this.model = new QuestionModel;
 
 			// Bind model validation to view
 			Backbone.Validation.bind(this);	
@@ -55,7 +55,7 @@ define([
 		render: function(){
 
 			// Compile template
-			var compiledTemplate = _.template( adminTemplate, this.model.toJSON() );
+			var compiledTemplate = _.template( addTemplate, this.model.toJSON() );
 
 			// Render template
 			this.$el.html( compiledTemplate );
@@ -175,6 +175,6 @@ define([
 
 	});
 
-	return AdminView;
+	return AddView;
 
 });

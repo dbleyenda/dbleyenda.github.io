@@ -1,4 +1,4 @@
-// Filename: models/admin/AdminModel
+// Filename: models/QuestionModel
 define([
 	'jquery',
 	'underscore',
@@ -7,7 +7,7 @@ define([
 	'backbone_epoxy',
 ], function($, _, Backbone){
 
-	var AdminModel = Backbone.Epoxy.Model.extend({
+	var QuestionModel = Backbone.Epoxy.Model.extend({
 
 		defaults: {
 			answer: "",
@@ -39,6 +39,6 @@ define([
 
 	});
 
-	return AdminModel;
+	return QuestionModel;
 
 });

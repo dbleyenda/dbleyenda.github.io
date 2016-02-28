@@ -1,9 +1,9 @@
-// Filename: views/admin/ItemView
+// Filename: views/admin/add/ItemView
 define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/admin/itemTemplate.html',
+	'text!templates/admin/add/itemTemplate.html',
 	'bootstrap',
 	'backbone_validation',
 	'backbone_epoxy'

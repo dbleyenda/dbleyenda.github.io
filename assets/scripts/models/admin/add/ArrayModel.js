@@ -1,4 +1,4 @@
-// Filename: models/admin/ArrayModel
+// Filename: models/admin/add/ArrayModel
 define([
 	'jquery',
 	'underscore',

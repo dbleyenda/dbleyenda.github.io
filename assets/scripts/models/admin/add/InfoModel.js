@@ -1,9 +1,9 @@
-// Filename: models/admin/InfoModel
+// Filename: models/admin/add/InfoModel
 define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/admin/ArrayModel',
+	'models/admin/add/ArrayModel',
 	'backbone_validation',
 	'backbone_epoxy',
 ], function($, _, Backbone, ArrayModel){

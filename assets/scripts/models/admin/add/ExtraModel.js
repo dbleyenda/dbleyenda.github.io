@@ -1,9 +1,9 @@
-// Filename: models/admin/ExtraModel
+// Filename: models/admin/add/ExtraModel
 define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/admin/ArrayModel',
+	'models/admin/add/ArrayModel',
 	'backbone_validation',
 	'backbone_epoxy',
 ], function($, _, Backbone, ArrayModel){

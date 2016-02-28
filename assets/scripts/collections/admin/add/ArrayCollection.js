@@ -1,4 +1,4 @@
-// Filename: collections/admin/ArrayCollection
+// Filename: collections/admin/add/ArrayCollection
 define([
 	'jquery',
 	'underscore',

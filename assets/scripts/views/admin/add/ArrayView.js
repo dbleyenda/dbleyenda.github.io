@@ -1,9 +1,9 @@
-// Filename: views/admin/ArrayView
+// Filename: views/admin/add/ArrayView
 define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/admin/ItemView',
+	'views/admin/add/ItemView',
 	'bootstrap',
 	'backbone_validation',
 	'backbone_epoxy'
@@ -113,6 +113,8 @@ define([
 
 					// Set again in field without comma
 					this.$el.find('.field').val(item);
+
+					// INTENTAR CAMBIAR ESTO A UN LISTEN ONCHANGE
 
 					// If info, set model
 					if( !_.isUndefined(this.model.get('info')) ){
