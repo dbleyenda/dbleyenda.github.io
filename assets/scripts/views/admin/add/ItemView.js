@@ -23,10 +23,10 @@ define([
 
 		render: function(){
 			// Compile template
-			var compiledTemplate = _.template( itemTemplate, {} );
+			var compiledTemplate = _.template( itemTemplate );
 
 			// Render template
-			this.$el.html( compiledTemplate );
+			this.$el.html( compiledTemplate( this.model.toJSON() ) );
 
 			return this;
 		},

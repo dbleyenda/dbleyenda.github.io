@@ -7,10 +7,9 @@ define([
 	'text!templates/admin/list/listTemplate.html',
 	'firebase',
 	'bootstrap',
-	'backbone_epoxy',
 ], function($, _, Backbone, ListCollection, listTemplate){
 
-	var ListView = Backbone.Epoxy.View.extend({
+	var ListView = Backbone.View.extend({
 
 		el: "#id_sectionContainer",
 
@@ -75,10 +74,6 @@ define([
 
 			// Target
 			var button = event.currentTarget;
-
-			console.log(button);
-
-			console.log($(button))
 
 			// Get option to load
 			var optionToLoad = $(button).attr('data-id');

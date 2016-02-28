@@ -16,6 +16,9 @@ define([
 
 			// Add Question
 			'add': 'addQuestion',
+
+			// edit Question
+			'edit/:id': 'editQuestion',
 			
 			// Default - Game
 			'*actions': 'defaultAction'
@@ -34,6 +37,13 @@ define([
 		// Add Question
 		app_router.on('route:addQuestion', function(){
 			var addView = new AddView();
+		});
+
+		// Edit Question
+		app_router.on('route:editQuestion', function(id){
+			var editView = new AddView({
+				id: id
+			});
 		});
 
 		// Default

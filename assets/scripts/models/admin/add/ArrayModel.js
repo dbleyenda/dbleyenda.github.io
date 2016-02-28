@@ -9,6 +9,10 @@ define([
 
 	var ArrayModel = Backbone.Epoxy.Model.extend({
 
+		defaults: {
+			item: null
+		},
+
 		checkValue: function(){
 			
 		}

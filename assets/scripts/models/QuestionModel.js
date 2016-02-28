@@ -4,10 +4,9 @@ define([
 	'underscore',
 	'backbone',
 	'backbone_validation',
-	'backbone_epoxy',
 ], function($, _, Backbone){
 
-	var QuestionModel = Backbone.Epoxy.Model.extend({
+	var QuestionModel = Backbone.Model.extend({
 
 		defaults: {
 			answer: "",
@@ -19,6 +18,7 @@ define([
 			info: [],
 			links: [],
 			extra: [],
+			id: null
 		},
 
 		validation: {

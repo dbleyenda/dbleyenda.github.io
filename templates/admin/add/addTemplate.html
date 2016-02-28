@@ -5,7 +5,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<a href="#/list">&lt; Volver</a>
-				<h2>Agregar una nueva pregunta</h2>
+				<% if( id != null ){ %>
+					<h2>Editar pregunta</h2>
+				<% }else{ %>
+					<h2>Agregar una nueva pregunta</h2>
+				<% } %>
 			</div>
 		</div>
 
@@ -18,38 +22,38 @@
 				<div class="form-group">
 					<label for="answer">Respuesta</label>
 					<span class="text-danger">*</span>
-					<input type="text" class="form-control field" id="answer" name="answer" placeholder="Nombre del autor" data-bind="value:answer,events:['keyup']">
+					<input type="text" class="form-control field" id="answer" name="answer" placeholder="Nombre del autor" data-bind="value:answer,events:['keyup']" value="<%=answer%>">
 				</div>
 
 				<!-- filename -->
 				<div class="form-group">
 					<label for="filename">Imagen</label>
 					<span class="text-danger">*</span>
-					<input type="text" class="form-control field" id="filename" name="filename" placeholder="Nombre del archivo de imagen" data-bind="value:filename,events:['keyup']">
+					<input type="text" class="form-control field" id="filename" name="filename" placeholder="Nombre del archivo de imagen" data-bind="value:filename,events:['keyup']" value="<%=filename%>">
 				</div>
 
 				<!-- birth_death -->
 				<div class="form-group">
 					<label for="birth_death">Nacimiento - Defunción</label>
-					<input type="text" class="form-control field" id="birth_death" name="birth_death" placeholder="Periodo de vida del autor" data-bind="value:birth_death,events:['keyup']">
+					<input type="text" class="form-control field" id="birth_death" name="birth_death" placeholder="Periodo de vida del autor" data-bind="value:birth_death,events:['keyup']" value="<%=birth_death%>">
 				</div>
 
 				<!-- name -->
 				<div class="form-group">
 					<label for="name">Nombre</label>
-					<input type="text" class="form-control field" id="name" name="name" placeholder="Nombre de la pieza" data-bind="value:name,events:['keyup']">
+					<input type="text" class="form-control field" id="name" name="name" placeholder="Nombre de la pieza" data-bind="value:name,events:['keyup']" value="<%=name%>">
 				</div>
 
 				<!-- year -->
 				<div class="form-group">
 					<label for="year">Año</label>
-					<input type="text" class="form-control field" id="year" name="year" placeholder="Año de la pieza" data-bind="value:year,events:['keyup']">
+					<input type="text" class="form-control field" id="year" name="year" placeholder="Año de la pieza" data-bind="value:year,events:['keyup']" value="<%=year%>">
 				</div>
 
 				<!-- type -->
 				<div class="form-group">
 					<label for="type">Tipo</label>
-					<input type="text" class="form-control field" id="type" name="type" placeholder="Tipo de pieza" data-bind="value:type,events:['keyup']">
+					<input type="text" class="form-control field" id="type" name="type" placeholder="Tipo de pieza" data-bind="value:type,events:['keyup']" value="<%=type%>">
 				</div>
 
 				<!-- info -->
@@ -97,7 +101,7 @@
 				<hr>
 
 				<div class="buttons text-center">
-					<input class="btn btn-primary btn-lg" type="submit" value="Guardar" id="id_saveButton">
+					<input class="btn btn-primary btn-lg" type="submit" value="<% if( id != null ){ %>Actualizar<% }else{ %>Guardar<% } %>" id="id_saveButton">
 				</div>
 
 			</div>

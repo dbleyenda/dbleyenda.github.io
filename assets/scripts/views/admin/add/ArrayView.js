@@ -6,10 +6,9 @@ define([
 	'views/admin/add/ItemView',
 	'bootstrap',
 	'backbone_validation',
-	'backbone_epoxy'
 ], function($, _, Backbone, ItemView){
 
-	var ArrayView = Backbone.Epoxy.View.extend({
+	var ArrayView = Backbone.View.extend({
 
 		events: {
 			'click .addButton': 'onAddButtonClicked',
@@ -31,6 +30,10 @@ define([
 
 		render: function(){
 
+			if( this.collection.length > 0 ){
+				this.collection.forEach(this.addItem, this);
+			}
+
 			// Bind custom model validation callbacks
 			Backbone.Validation.bind(this, {
 				valid: _.bind(function (view, attr, selector) {
@@ -40,6 +43,8 @@ define([
 					this.setIndividualError(view.$('[name=' + attr + ']'), attr, error);
 				}, this),
 			});
+
+			return this;
 
 		},
 
