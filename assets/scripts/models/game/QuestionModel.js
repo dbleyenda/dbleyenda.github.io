@@ -33,32 +33,19 @@ define([
 		initialize: function(){
 			
 			// Prepare Info
-			if( !_.isUndefined( this.get('info') ) ){
+			if( !_.isUndefined( this.get('info') ) && _.isArray( this.get('info') ) ){
 				this.prepareList( this.get('info'), 'info' );
 			}
 
 			// Prepare Extra
-			if( !_.isUndefined( this.get('extra') ) ){
+			if( !_.isUndefined( this.get('extra') ) && _.isArray( this.get('extra') ) ){
 				this.prepareList( this.get('extra'), 'extra' );
 			}
 
 			// Prepare Links
-			if( !_.isUndefined( this.get('links') ) ){
+			if( !_.isUndefined( this.get('links') ) && _.isArray( this.get('links') ) ){
 				this.prepareLinks( this.get('links'), 'links' );
 			}
-		},
-
-		prepareInfo: function(){
-
-			var info = this.get('info').split(';'),
-				newInfo = '';
-
-			for(var i=0;i<info.length;i++){
-				newInfo += '<li>' + info[i] + '</li>';
-			}
-
-			this.set('info', newInfo);
-
 		},
 
 		prepareList: function(list, propertyName){
