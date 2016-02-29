@@ -1,0 +1,93 @@
+<div class="row">
+
+	<!-- Image -->
+	<div class="col-md-6" id="id_imageColumn">
+		<figure>	
+			<img src="assets/images/game/<%= filename %>"/>
+		</figure>
+	</div>
+
+	<!-- Form -->
+	<div class="col-md-6" id="id_formColumn">		
+
+		<header>
+			<h1>Memorizate ésta.</h1>
+			<p>Un juego para estudiar las piezas gráficas del final de Historia 2 de Cátedra Gavito.</p>
+		</header>	
+
+		<hr>
+
+		<p class="text-muted">Respuestas correctas: <strong><span data-bind="text:correct"><%= correct %></span> de <%= total %></strong></span>.
+
+		<hr>
+
+		<div class="form-group">
+			<label for="id_userAnswer">Escribe el nombre y/o apellido de el/los autor/es de la pieza:</label>
+			<input type="text" class="form-control" name="userAnswer" id="id_userAnswer" placeholder="Ésta pieza es de..." data-bind="value:userAnswer,events:['keyup']" />
+		</div>
+
+		<button class="btn btn-default" id="id_getAnswerButton" title="Ver respuesta">Ver respuesta</button>
+
+		<div id="id_answerContainer" style="display:none;">
+			
+			<div class="row">
+
+				<div class="col-md-9">
+
+					<!-- Ok Message -->
+					<p class="h5 bg-success ok" style="display:none;"><span class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span> ¡Bien! ¡Le pegaste!</p>
+
+					<!-- Wrong Message -->
+					<p class="h5 bg-danger wrong" style="display:none;"><span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span> Segui estudiando.</p>
+
+				</div>
+
+				<div class="col-md-3">
+
+					<!-- Next Button -->
+					<p class="h5"><button class="btn btn-primary btn-block" id="id_nextButton" title="Continuar">Continuar</button></p>
+
+				</div>
+
+			</div>
+
+			<hr>
+			
+			<!-- Correct Answer -->
+			<p class="result h4">La respuesta correcta es: <strong><%= answer %></strong> <span class="text-muted"><% if(birth_death != ""){%>(<%= birth_death %>)<%}%></span></p>
+
+			<!-- Name -->
+			<% if(name != '' || year != '' || type != '' ){%>
+				<hr>
+				<h4><%= name %> <span class="text-muted">(<%= year %>)</span></h4>
+				<p class="text-muted"><%= type %></p>
+			<%}%>
+
+			<% if(info != '' || extra != '' || links != '' ){%>
+				<hr>
+
+				<!-- Info -->
+				<% if(info != ''){%>
+					<h5 class="text-muted">¿Qué se puede decir sobre esta pieza?</h5>
+					<ul class="text-muted"><%= info %></ul>
+				<%}%>
+
+				<!-- Extra -->
+				<% if(extra != ''){%>
+					<h5 class="text-muted">Más información</h5>
+					<ul class="text-muted"><%= extra %></ul>
+				<%}%>
+
+				<!-- Links -->
+				<% if(links != ''){%>
+					<h5 class="text-muted">Links</h5>
+					<ul class="text-muted"><%= links %></ul>
+				<%}%>
+
+			<%}%>			
+
+		</div>
+
+	</div>
+
+</div>

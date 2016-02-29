@@ -1,0 +1,28 @@
+<div id="id_resultsModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Fin del juego</h4>
+			</div>
+			<div class="modal-body">
+				<h4>Respondiste correctamente <span id="id_correctAnswers"><%=correct%></span> de <span id="id_totalQuestions"><%=total%></span>.</h4>
+				<p id="id_finalMessage"></p>
+				<p>¡Gracias por jugar! Pasalo a tus compañeros, es más divertido estudiar jugando.</p>
+				<p>Y si te gusto, ¡compartilo!</p>
+				<div class="share">
+
+					<!-- Twitter -->
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="dbleyenda" data-hashtags="Gavito2">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+					<!-- Facebook -->
+					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdbleyenda.github.io%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="id_tryAgain" class="btn btn-primary" title="Intentar de nuevo">Intentarlo de nuevo</button>
+			</div>
+		</div>
+	</div>
+</div>

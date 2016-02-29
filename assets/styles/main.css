@@ -1,0 +1,56 @@
+/* Header */
+.header img{width:32px;height:32px;margin-right:10px;}
+
+/* Sticky Footer */
+html, 
+body{height:100%;padding:0;}
+.appPage{min-height:100%;margin-bottom:-80px;}
+.appPage:after{content:"";display:block;}
+#id_footer,
+.appPage:after{height:80px;}
+#id_footer{overflow:hidden;}
+
+/* General */
+.appPage .container{padding-top:50px;padding-bottom:20px;}
+
+/* Loading */
+.loading{position:fixed;top:0;left:0;background:rgba(255,255,255,.9);z-index:200;width:100%;height:100%;display:table;}
+.loading > div{display:table-row;height:100%;}
+.loading > div > div{display:table-cell;vertical-align:middle;height:100%;}
+
+/* Game */
+#id_imageColumn{text-align:center;}
+#id_imageColumn img{margin-bottom:20px;max-width:100%;}
+#id_answerContainer .ok,
+#id_answerContainer .wrong{padding:10px;border-radius:5px;}
+
+/* Admin */
+
+	/* Add */
+	.itemsAdded{padding-top:10px;}
+
+	/* List */
+	#id_list #id_listContent{padding-top:30px;}
+	#id_list .toolbar{margin-top:20px;}
+
+		/* Table */
+		#id_questionsTable .image{width:150px;}
+		#id_questionsTable .image figure{padding-right:15px;}
+		#id_questionsTable .image img{width:100%;max-width:100%;}
+		#id_questionsTable .description{position:relative;}
+		#id_questionsTable .description .actions{display:none;position:absolute;bottom:10px;}
+		#id_questionsTable tr:hover .actions{display:block;}
+
+		/* Grid */
+		#id_questionsGrid .panel{height:370px;position:relative;overflow:hidden;text-align:center;}
+		#id_questionsGrid .image figure{max-width:100%;overflow:hidden;}
+		#id_questionsGrid .image img{max-height:250px;}
+		#id_questionsGrid .description .h5,
+		#id_questionsGrid .description p,
+		#id_questionsGrid .description .actions .filename{text-overflow:ellipsis;white-space:nowrap;max-width:100%;overflow:hidden;}
+		#id_questionsGrid .description .actions{display:none;position:absolute;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.8);height:370px;line-height:370px;}
+		#id_questionsGrid .panel:hover .description .actions{display:block;}
+		#id_questionsGrid .description .actions .btn{margin:0 5px;}
+		#id_questionsGrid .description .actions .filename{position:absolute;bottom:0;height:55px;font-weight:bold;left:0;line-height:normal;width:100%;background:#fff;padding:0 10px;}
+
+

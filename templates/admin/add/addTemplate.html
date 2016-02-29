@@ -1,0 +1,129 @@
+<div class="row">
+
+	<div class="col-md-8 col-md-offset-2" id="id_add">
+
+		<div class="row header">
+
+			<div class="col-md-4">
+				<a href="#/admin/list" class="btn btn-link">&lt; Volver</a>
+			</div>
+			<div class="col-md-8 text-right">
+				<img src="<%= userData.password.profileImageURL %>"/> <strong><%= userData.password.email %></strong> <a href="#/logout" class="btn btn-link">Cerrar sesión</a>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-md-12">
+				<% if( question.id != null ){ %>
+					<h2>Editar pregunta</h2>
+				<% }else{ %>
+					<h2>Agregar una nueva pregunta</h2>
+				<% } %>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<!-- answer -->
+				<div class="form-group">
+					<label for="answer">Respuesta</label>
+					<span class="text-danger">*</span>
+					<input type="text" class="form-control field" id="answer" name="answer" placeholder="Nombre del autor" data-bind="value:answer,events:['keyup']" value="<%=question.answer%>">
+				</div>
+
+				<!-- filename -->
+				<div class="form-group">
+					<label for="filename">Imagen</label>
+					<span class="text-danger">*</span>
+					<input type="text" class="form-control field" id="filename" name="filename" placeholder="Nombre del archivo de imagen" data-bind="value:filename,events:['keyup']" value="<%=question.filename%>">
+				</div>
+
+				<!-- birth_death -->
+				<div class="form-group">
+					<label for="birth_death">Nacimiento - Defunción</label>
+					<input type="text" class="form-control field" id="birth_death" name="birth_death" placeholder="Periodo de vida del autor" data-bind="value:birth_death,events:['keyup']" value="<%=question.birth_death%>">
+				</div>
+
+				<!-- name -->
+				<div class="form-group">
+					<label for="name">Nombre</label>
+					<input type="text" class="form-control field" id="name" name="name" placeholder="Nombre de la pieza" data-bind="value:name,events:['keyup']" value="<%=question.name%>">
+				</div>
+
+				<!-- year -->
+				<div class="form-group">
+					<label for="year">Año</label>
+					<input type="text" class="form-control field" id="year" name="year" placeholder="Año de la pieza" data-bind="value:year,events:['keyup']" value="<%=question.year%>">
+				</div>
+
+				<!-- type -->
+				<div class="form-group">
+					<label for="type">Tipo</label>
+					<input type="text" class="form-control field" id="type" name="type" placeholder="Tipo de pieza" data-bind="value:type,events:['keyup']" value="<%=question.type%>">
+				</div>
+
+				<!-- info -->
+				<div class="form-group" id="id_infoContainer">
+					<label for="info">Desarrollo</label>
+					<div class="row">
+						<div class="col-md-10">
+							<input type="text" class="form-control field" id="info" name="info" placeholder="¿Qué se puede decir sobre esta pieza?">
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-default addButton" style="width:100%;">Agregar</button>
+						</div>
+					</div>
+					<ul class="itemsAdded"></ul>
+				</div>
+
+				<!-- extra -->
+				<div class="form-group" id="id_extraContainer">
+					<label for="extra">Más información</label>
+					<div class="row">
+						<div class="col-md-10">
+							<input type="text" class="form-control field" id="extra" name="extra" placeholder="Información adicional">
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-default addButton" style="width:100%;">Agregar</button>
+						</div>
+					</div>
+					<ul class="itemsAdded"></ul>
+				</div>
+
+				<!-- links -->
+				<div class="form-group" id="id_linksContainer">
+					<label for="links">Links</label>
+					<div class="row">
+						<div class="col-md-10">
+							<input type="url" class="form-control field" id="links" name="links" placeholder="Links a más información">
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-default addButton" style="width:100%;">Agregar</button>
+						</div>
+					</div>
+					<ul class="itemsAdded"></ul>
+				</div>
+
+				<hr>
+
+				<div class="buttons text-center">
+					<input class="btn btn-primary btn-lg" type="submit" value="<% if( question.id != null ){ %>Actualizar<% }else{ %>Guardar<% } %>" id="<% if( question.id != null ){ %>id_updateButton<% }else{ %>id_saveButton<% } %>">
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="id_savingMask" class="loading text-center" style="display:none;">
+	<div>
+		<div class="h4">Guardando, por favor espere...</div>
+	</div>
+</div>
