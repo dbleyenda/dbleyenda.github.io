@@ -16,10 +16,24 @@ define([
 		el: "#id_sectionContainer",
 
 		events: {
-
+			'click #id_loginSubmit': 'onSubmitButtonClicked'
 		},
 
 		initialize: function(options){
+
+			// Create user
+			// // lo dejo comentado por si se necesita crear un usuario.
+			// var ref = new Firebase("https://luminous-inferno-7458.firebaseio.com/");
+			// ref.createUser({
+			// 	email: "email@email.com",
+			// 	password: "1234"
+			// }, function(error, userData) {
+			// 	if(error){
+			// 		console.log("Error creating user:", error);
+			// 	}else{
+			// 		console.log("Successfully created user account with uid:", userData.uid);
+			// 	}
+			// });
 
 			// Hide Loading
 			this.mask('#id_loadingMask', 'hide');
@@ -53,6 +67,36 @@ define([
 				}, this),
 			});
 
+		},
+
+		onSubmitButtonClicked: function(){
+
+			if(this.model.isValid(true)){
+
+				// Show Loading
+				this.mask('#id_loadingMask', 'show');
+
+				var ref = new Firebase("https://luminous-inferno-7458.firebaseio.com/");
+				ref.authWithPassword(this.model.toJSON(), _.bind(function(error, authData) {
+					
+					// Hide Loading
+					this.mask('#id_loadingMask', 'hide');
+
+					if(error){
+						console.log("Login Failed!", error);
+						alert( 'E-mail o contraseña invalidos.\nPor favor intente de nuevo.' );
+					}else {
+						//console.log("Authenticated successfully with payload:", authData);
+
+						// localStorage authData
+						window.localStorage.setItem('userData',JSON.stringify(authData));
+						
+						// Navigate to list
+						Backbone.history.navigate('#/admin/list', {trigger: true});
+					}
+				}, this));
+
+			}
 		},
 
 		setIndividualError: function(element, name, error){

@@ -2,13 +2,15 @@
 
 	<div class="col-md-8 col-md-offset-2" id="id_list">
 
-		<div class="row">
-			<div class="col-md-8">
-				<a href="#" class="btn btn-link">&lt; Ir al juego</a>
-			</div>
-			<div class="col-md-4 text-right">
+		<div class="row header">
+			<div class="col-md-6">
+				<a href="#" class="btn btn-link">Ir al juego</a>
 				<a href="#/admin/add" class="btn btn-primary">Nueva pregunta</a>
 			</div>
+			<div class="col-md-6 text-right">
+				<img src="<%= userData.password.profileImageURL %>"/> <strong><%= userData.password.email %></strong> <a href="#/logout" class="btn btn-link">Cerrar sesión</a>
+			</div>
+
 		</div>
 
 		<hr>

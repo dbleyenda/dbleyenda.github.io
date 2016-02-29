@@ -1,5 +1,5 @@
-/* General */
-.container{padding-top:50px;padding-bottom:20px;}
+/* Header */
+.header img{width:32px;height:32px;margin-right:10px;}
 
 /* Sticky Footer */
 html, 
@@ -10,12 +10,16 @@ body{height:100%;padding:0;}
 .appPage:after{height:80px;}
 #id_footer{overflow:hidden;}
 
+/* General */
+.appPage .container{padding-top:50px;padding-bottom:20px;}
+
 /* Loading */
 .loading{position:fixed;top:0;left:0;background:rgba(255,255,255,.9);z-index:200;width:100%;height:100%;display:table;}
 .loading > div{display:table-row;height:100%;}
 .loading > div > div{display:table-cell;vertical-align:middle;height:100%;}
 
 /* Game */
+#id_imageColumn{text-align:center;}
 #id_imageColumn img{margin-bottom:20px;max-width:100%;}
 #id_answerContainer .ok,
 #id_answerContainer .wrong{padding:10px;border-radius:5px;}
@@ -35,10 +39,6 @@ body{height:100%;padding:0;}
 		#id_questionsTable .image img{width:100%;max-width:100%;}
 		#id_questionsTable .description{position:relative;}
 		#id_questionsTable .description .actions{display:none;position:absolute;bottom:10px;}
-		/*
-		#id_questionsTable .description .actions li:before{content:" - ";color:#ccc;}
-		#id_questionsTable .description .actions li:first-child:before{display:none;}
-		*/
 		#id_questionsTable tr:hover .actions{display:block;}
 
 		/* Grid */

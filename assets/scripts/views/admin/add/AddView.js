@@ -21,6 +21,7 @@ define([
 		el: "#id_sectionContainer",
 
 		editMode: false,
+		userData: null,
 
 		events: {
 			'click #id_saveButton, #id_updateButton': 'onSaveButtonClicked',
@@ -28,12 +29,21 @@ define([
 
 		initialize: function(options){
 
-			// If `id` on `options`, set `editMode` to true
+			// If `id` on `options`
 			if( !_.isUndefined( options ) ){
+
+				// Set userData
+				if( !_.isUndefined( options.userData ) ){
+					this.userData = options.userData;
+				}
+
+				// Set `editMode` to true
 				if( !_.isUndefined( options.id ) ){
 					this.editMode = true;
 				}
 			}
+
+			console.log(this.userData);
 
 			// Show Loading
 			this.mask('#id_loadingMask', 'show');
@@ -82,7 +92,10 @@ define([
 			var compiledTemplate = _.template( addTemplate );
 
 			// Render template
-			this.$el.html( compiledTemplate(this.model.toJSON()) );
+			this.$el.html( compiledTemplate({
+				question: this.model.toJSON(),
+				userData: this.userData
+			}) );
 
 			// Init Arrays Fields
 			this.initArraysFields();
@@ -295,7 +308,7 @@ define([
 
 				// TODO: Ver si esto hay una mejor manera de hacerlo.
 				// Redirijo a la Lista
-				window.location.href = '#list';
+				Backbone.history.navigate('#/admin/list', {trigger: true});
 
 				// Destruyo esta vista.
 				this.destroy();

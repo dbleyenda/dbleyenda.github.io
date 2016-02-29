@@ -13,12 +13,24 @@ define([
 
 		el: "#id_sectionContainer",
 
+		userData: null,
+
 		events: {
 			'click .toolbar .btn': 'onToolbarButtonClicked',
 			'click .remove': 'onRemoveButtonClicked'
 		},
 
-		initialize: function(){
+		initialize: function(options){
+
+			// If `id` on `options`
+			if( !_.isUndefined( options ) ){
+
+				// Set userData
+				if( !_.isUndefined( options.userData ) ){
+					this.userData = options.userData;
+				}
+
+			}
 
 			// Show Loading
 			this.mask('#id_loadingMask', 'show');
@@ -57,7 +69,10 @@ define([
 			var compiledTemplate = _.template( listTemplate );
 
 			// Render template
-			this.$el.html( compiledTemplate( {questions: this.collection.toJSON().reverse()} ) );
+			this.$el.html( compiledTemplate( {
+				questions: this.collection.toJSON().reverse(),
+				userData: this.userData
+			} ) );
 
 		},
 

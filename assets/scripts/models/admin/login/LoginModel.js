@@ -9,13 +9,27 @@ define([
 	var LoginModel = Backbone.Model.extend({
 
 		defaults: {
-			username: null,
+			email: null,
 			password: null
 		},
 
-		// validation: {
-
-		// }
+		validation: {
+			email: [
+				{
+					required: true,
+					msg: "Campo obligatorio."
+				},{
+					pattern: 'email',
+					msg: "Ingrese un e-mail válido."
+				}
+			],
+			password: [
+				{
+					required: true,
+					msg: "Campo obligatorio."
+				},
+			],
+		}
 
 	});
 
