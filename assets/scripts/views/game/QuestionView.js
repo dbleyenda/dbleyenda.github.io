@@ -37,7 +37,7 @@ define([
 
 			// Compile template
 			var compiledTemplate = _.template( questionTemplate );
-			
+
 			// Render template
 			this.$el.html( compiledTemplate( this.model.toJSON() ) );
 
