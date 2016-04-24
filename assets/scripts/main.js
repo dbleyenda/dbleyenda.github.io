@@ -2,14 +2,14 @@
 
 require.config({
 	paths: {
-		jquery: '../../vendor/scripts/jquery/jquery.min',
-		bootstrap: '../../vendor/scripts/bootstrap/bootstrap.min',
-		underscore: '../../vendor/scripts/underscore/underscore.min',
-		backbone: '../../vendor/scripts/backbone/backbone.min',
-		backbone_epoxy: '../../vendor/scripts/backbone.epoxy/backbone.epoxy.min',
-		backbone_validation: '../../vendor/scripts/backbone.validation/backbone.validation.min',
-		firebase: '../../vendor/scripts/firebase/firebase',
-		backbonefire: '../../vendor/scripts/backbonefire/backbonefire',
+		jquery: '../../vendor/jquery/jquery.min',
+		bootstrap: '../../vendor/bootstrap/js/bootstrap.min',
+		underscore: '../../vendor/underscore/underscore.min',
+		backbone: '../../vendor/backbone/backbone.min',
+		backbone_epoxy: '../../vendor/backbone.epoxy/backbone.epoxy.min',
+		backbone_validation: '../../vendor/backbone.validation/backbone.validation.min',
+		firebase: '../../vendor/firebase/firebase',
+		backbonefire: '../../vendor/backbonefire/backbonefire',
 		templates: '../../templates'
 	}
 });

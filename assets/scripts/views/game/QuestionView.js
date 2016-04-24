@@ -18,6 +18,7 @@ define([
 
 		events: {
 			"click #id_getAnswerButton": "onGetAnswerButtonClicked", 
+			"click #id_noAnswerButton": "onNoAnswerButtonClicked",
 			"keyup #id_userAnswer": "checkKeyUp",
 		},
 
@@ -96,9 +97,16 @@ define([
 
 		},
 
+		onNoAnswerButtonClicked: function(){
+			this.model.set('userAnswer','=(');
+
+			this.onGetAnswerButtonClicked();
+		},
+
 		showAnswer: function(){
 
 			// Show / Hide / Disable things
+			this.$el.find('#id_noAnswerButton').hide();
 			this.$el.find('#id_getAnswerButton').hide();
 			this.$el.find('#id_userAnswer').attr('disabled', 'disabled');
 			this.$el.find('#id_answerContainer').show();
@@ -131,21 +139,31 @@ define([
 			// If "answer" is equal to "userAnswer" or if "valid" is true, User Answer is OK.
 			if( answer === userAnswer || valid ){
 
-				// Update Coorect Answer
-				var updateCorrectAnswers = this.parentView.model.get('correct') + 1;
-				this.model.set('correct', updateCorrectAnswers);
-				this.parentView.model.set('correct', updateCorrectAnswers);
+				// Update Correct Answer
+				var updateCorrectAnswer = this.parentView.model.get('correct') + 1;
+				this.model.set('correct', updateCorrectAnswer);
+				this.parentView.model.set('correct', updateCorrectAnswer);
 
 				// Show Ok Message
 				this.$el.find("#id_answerContainer .ok").show();
 
 			// Else, User Answer is wrong.
 			}else{
+
+				// Update Wrong Answer
+				var updateWrongAnswer = this.parentView.model.get('wrong') + 1;
+				this.model.set('wrong', updateWrongAnswer);
+				this.parentView.model.set('wrong', updateWrongAnswer);
 				
 				// Show Wrong Message
 				this.$el.find("#id_answerContainer .wrong").show();
 
 			}
+
+			// Update Actual Question
+			var updateActualQuestion = this.parentView.model.get('actual') + 1;
+			this.model.set('actual', updateActualQuestion);
+			this.parentView.model.set('actual', updateActualQuestion);
 			
 			// Show Answer
 			this.showAnswer();

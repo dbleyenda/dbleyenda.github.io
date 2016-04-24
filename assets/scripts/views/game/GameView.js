@@ -16,13 +16,16 @@ define([
 		el: "#id_appContainer",
 
 		bindings: {
+			"#id_actualQuestion": "text:actual",
 			"#id_correctAnswers": "text:correct",
-			"#id_totalQuestions": "text:total"
+			"#id_totalQuestions": "text:total",
+			"#id_wrongAnswers": "text:wrong"
 		},
 
 		events: {
 			"click #id_nextButton": "nextQuestion",
 			"click #id_tryAgain": "reloadPage",
+			"click #id_quitButton": "finishGame"
 		},
 
 		initialize: function(){
@@ -87,6 +90,8 @@ define([
 		showQuestion: function( position ){
 			var actualModel = this.collection.at( position );
 
+			actualModel.set( 'actual', this.model.get('actual') );
+			actualModel.set( 'wrong', this.model.get('wrong') );
 			actualModel.set( 'correct', this.model.get('correct') );
 			actualModel.set( 'total', this.model.get('total') );
 
@@ -102,14 +107,10 @@ define([
 
 			// Added setTimeOut to prevent wrong focus when using "enter" on "Continue" Button
 			setTimeout(function(){
-				
-				// Get next ID
-				var next = self.model.get('actual') + 1;
 
 				// If next question available
-				if( next < self.collection.length ){
+				if( self.model.get('actual') < self.collection.length ){
 					
-					self.model.set('actual', next);
 					self.render();
 
 				// Else, go to results
@@ -163,7 +164,7 @@ define([
 
 			// TODO checkear como remover la view
 
-		},
+		}
 
 	});
 

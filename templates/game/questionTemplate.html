@@ -17,7 +17,20 @@
 
 		<hr>
 
-		<p class="text-muted">Respuestas correctas: <strong><span data-bind="text:correct"><%= correct %></span> de <%= total %></strong></span>.
+		<div class="row" id="id_statusRow">
+			<div class="col-md-6">
+				<p class="text-muted">
+					<span id="id_questionStatus">Pregunta <strong><% var showActual = actual + 1; %><%= showActual %></strong> de <strong><%= total %></strong></span>
+					<a class="text-danger" id="id_quitButton" title="Terminar juego">Terminar juego</a>
+				</p>
+			</div>
+			<div class="col-md-6 text-right">
+				<p class="text-muted">Respuestas: 
+					<span class="text-success icon-answer"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <strong data-bind="text:correct"><%= correct %></strong></span>
+					<span class="text-danger icon-answer"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <strong data-bind="text:wrong"><%= wrong %></strong></span>
+				</p>
+			</div>
+		</div>
 
 		<hr>
 
@@ -26,7 +39,12 @@
 			<input type="text" class="form-control" name="userAnswer" id="id_userAnswer" placeholder="Ésta pieza es de..." data-bind="value:userAnswer,events:['keyup']" />
 		</div>
 
-		<button class="btn btn-default" id="id_getAnswerButton" title="Ver respuesta">Ver respuesta</button>
+		<div class="row" id="id_buttonsRow">
+			<div class="col-md-12">
+				<button class="btn btn-default" id="id_getAnswerButton" title="Responder">Responder</button>
+				<button class="btn btn-link" id="id_noAnswerButton" title="No la se">No la se</button>
+			</div>
+		</div>
 
 		<div id="id_answerContainer" style="display:none;">
 			
@@ -45,7 +63,7 @@
 				<div class="col-md-3">
 
 					<!-- Next Button -->
-					<p class="h5"><button class="btn btn-primary btn-block" id="id_nextButton" title="Continuar">Continuar</button></p>
+					<p class="h5"><button class="btn btn-primary btn-block" id="id_nextButton" title="Continuar">Continuar <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></p>
 
 				</div>
 
