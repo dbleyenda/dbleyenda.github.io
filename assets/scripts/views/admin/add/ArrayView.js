@@ -95,20 +95,10 @@ define([
 
 		checkKeyUp: function(event){
 
-			// If "Enter" or "Comma" keys
-			if(event.keyCode == 13 || event.keyCode == 188){
+			// If "Enter" key
+			if(event.keyCode == 13){
 
 				var item = this.$el.find('.field').val();
-
-				if( event.keyCode == 188 ){
-
-					// Remove comma from field
-					item = item.slice(0,-1);
-
-					// Set again in field without comma
-					this.$el.find('.field').val(item);
-
-				}
 
 				// INTENTAR CAMBIAR ESTO A UN LISTEN ONCHANGE
 
