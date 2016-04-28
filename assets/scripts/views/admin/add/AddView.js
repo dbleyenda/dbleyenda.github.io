@@ -257,7 +257,6 @@ define([
 				if(error){
 					console.log("Authentication Failed!", error);
 				}else{
-					// answerSaveRef.push( this.model.toJSON(), this.finish() );
 					answerSaveRef.set( this.model.toJSON(), this.finish() );
 				}
 			}, this));
@@ -271,9 +270,7 @@ define([
 				if(error){
 					console.log("Authentication Failed!", error);
 				}else{
-
 					this.ref.update( this.model.toJSON(), this.finish() );
-					//answerUpdateRef.set( this.model.toJSON(), this.finish() );
 				}
 			}, this));
 
