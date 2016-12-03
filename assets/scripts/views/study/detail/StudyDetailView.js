@@ -4,7 +4,7 @@ define([
 	'underscore',
 	'backbone',
 	'models/QuestionModel',
-	'text!templates/study/detail/StudyDetailTemplate.html',
+	'text!templates/study/detail/studyDetailTemplate.html',
 	'firebase',
 	'bootstrap',
 ], function($, _, Backbone, QuestionModel, detailTemplate){

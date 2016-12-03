@@ -4,7 +4,7 @@ define([
 	'underscore',
 	'backbone',
 	'collections/study/list/StudyListCollection',
-	'text!templates/study/list/StudyListTemplate.html',
+	'text!templates/study/list/studyListTemplate.html',
 	'firebase',
 	'bootstrap',
 ], function($, _, Backbone, ListCollection, listTemplate){
