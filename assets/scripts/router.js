@@ -7,8 +7,10 @@ define([
 	'views/admin/login/LoginView',
 	'views/admin/add/AddView',
 	'views/admin/list/ListView',
+	'views/study/list/StudyListView',
+	'views/study/detail/StudyDetailView',
 	'views/FooterView'
-], function($, _, Backbone, GameView, LoginView, AddView, ListView, FooterView){
+], function($, _, Backbone, GameView, LoginView, AddView, ListView, StudyListView, StudyDetailView, FooterView){
 
 	var AppRouter = Backbone.Router.extend({
 
@@ -34,6 +36,12 @@ define([
 
 			// Admin - edit Question
 			'admin/edit/:id': 'editQuestion',
+
+			// Study Mode - List questions
+			'study': 'studyListQuestions',
+
+			// Study Mode - Question Detail
+			'study/:id': 'studyQuestionDetail',
 			
 			// Default - Game
 			'*actions': 'defaultAction'
@@ -53,7 +61,7 @@ define([
 			this.on('route:listQuestions', function(){
 				var userData = this.checkLogin();
 				if( userData ){
-					var addView = this.showView( new ListView({
+					var listView = this.showView( new ListView({
 						userData: userData
 					}) );
 				}
@@ -78,6 +86,18 @@ define([
 						userData: userData
 					}) );
 				}
+			});
+
+			// Study Mode / List Questions
+			this.on('route:studyListQuestions', function(){
+				var studyListView = this.showView( new StudyListView({}) );
+			});
+
+			// Study Mode / Question Detail
+			this.on('route:studyQuestionDetail', function(id){
+				var studyDetailView = this.showView( new StudyDetailView({ 
+					id: id
+				}) );
 			});
 
 			// Default

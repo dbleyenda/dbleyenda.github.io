@@ -36,6 +36,34 @@ define([
 			],
 		},
 
+		prepareList: function(list, propertyName){
+
+			var newList = '';
+
+			if(list[0] != ''){
+				for(var i=0;i<list.length;i++){
+					newList += '<li>' + list[i] + '</li>';
+				}
+			}
+
+			this.set(propertyName, newList);
+
+		},
+
+		prepareLinks: function(list, propertyName){
+
+			var newList = '';
+
+			if(list[0] != ''){
+				for(var i=0;i<list.length;i++){
+					newList += '<li><a href="' + list[i] + '" target="_blank">' + list[i] + '</a></li>';
+				}
+			}
+
+			this.set(propertyName, newList);
+
+		},
+
 
 	});
 

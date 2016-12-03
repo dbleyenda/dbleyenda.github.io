@@ -30,6 +30,10 @@ define([
 
 		initialize: function(){
 
+			// Toggle footer nav link
+			$('#footer-nav .study').show();
+			$('#footer-nav .game').hide();
+
 			// Show Loading
 			this.mask('#id_loadingMask', 'show');
 

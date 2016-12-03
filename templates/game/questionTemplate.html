@@ -18,17 +18,20 @@
 		<hr>
 
 		<div class="row" id="id_statusRow">
-			<div class="col-md-6">
+			<div class="col-md-7">
 				<p class="text-muted">
-					<span id="id_questionStatus">Pregunta <strong><% var showActual = actual + 1; %><%= showActual %></strong> de <strong><%= total %></strong></span>
+					<span id="id_questionStatus">Pregunta <strong><% var showActual = actual + 1; %><%= showActual %></strong> de <strong><%= total %></strong> (<%= Math.round( ((actual*100)/total) * 10) / 10 %>%)</span>
 					<a class="text-danger" id="id_quitButton" title="Terminar juego">Terminar juego</a>
 				</p>
 			</div>
-			<div class="col-md-6 text-right">
+			<div class="col-md-5 text-right">
 				<p class="text-muted">Respuestas: 
 					<span class="text-success icon-answer"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <strong data-bind="text:correct"><%= correct %></strong></span>
 					<span class="text-danger icon-answer"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <strong data-bind="text:wrong"><%= wrong %></strong></span>
 				</p>
+			</div>
+			<div class="progressBar">
+				<div class="bar bg-primary" style="width:<%= (actual*100)/total %>%;"></div>
 			</div>
 		</div>
 

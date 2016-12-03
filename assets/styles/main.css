@@ -25,9 +25,12 @@ body{height:100%;padding:0;}
 #id_imageColumn img{margin-bottom:20px;max-width:100%;}
 #id_answerContainer .ok,
 #id_answerContainer .wrong{padding:10px;border-radius:5px;}
+#id_statusRow{position:relative;}
 #id_statusRow > div > p{margin-bottom:0;}
 #id_statusRow #id_questionStatus:after{content:" | ";padding:0 5px;}
 #id_statusRow #id_quitButton{cursor:pointer;}
+#id_statusRow .progressBar{width:100%;height:4px;line-height:0;position:absolute;bottom:-21px;-webkit-box-sizing;border-box;-moz-box-sizing;border-box;box-sizing;border-box;padding:0 15px;}
+#id_statusRow .progressBar .bar{height:4px;line-height:0;}
 
 /* Results Modal */
 #id_resultsModal p:first-child{padding-top:5px;}
@@ -40,6 +43,7 @@ body{height:100%;padding:0;}
 
 	/* Add */
 	.itemsAdded{padding-top:10px;}
+	.itemsAdded .removeButton{cursor:pointer;}
 
 	/* List */
 	#id_list #id_listContent{padding-top:30px;}
@@ -64,5 +68,9 @@ body{height:100%;padding:0;}
 		#id_questionsGrid .panel:hover .description .actions{display:block;}
 		#id_questionsGrid .description .actions .btn{margin:0 5px;}
 		#id_questionsGrid .description .actions .filename{position:absolute;bottom:0;height:55px;font-weight:bold;left:0;line-height:normal;width:100%;background:#fff;padding:0 10px;}
+
+/* Study */
+#id_studyList .card,
+#id_studyList tr.questionTR{cursor:pointer;}
 
 

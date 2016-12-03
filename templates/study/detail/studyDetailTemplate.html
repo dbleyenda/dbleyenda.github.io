@@ -1,0 +1,89 @@
+<div class="row">
+
+	<div class="col-md-12" id="id_add">
+
+		<div class="row header">
+
+			<div class="col-md-4">
+				<a href="#/study" class="btn btn-link">&lt; Volver</a>
+			</div>
+
+			<div class="col-md-8 text-right">
+				<div class="btn-group pagination">
+					<button class="btn btn-default" aria-label="Anterior" title="Anterior" data-action="prev">
+						Anterior
+					</button>
+					<button class="btn btn-default" aria-label="Siguiente" title="Siguiente" data-action="next">
+						Siguiente
+					</button>
+				</div>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<div class="row" style="margin-top:30px;">
+
+			<!-- Detail -->
+			<div class="col-md-6" id="id_formColumn">		
+
+				<div id="id_answerContainer">
+
+					<p class="result h3" style="padding-bottom:20px;"><strong><%= answer %></strong> <span class="text-muted"><% if(birth_death != ""){%>(<%= birth_death %>)<%}%></span></p>
+
+					<!-- Name -->
+					<% if(name != '' || year != '' || type != '' ){%>
+						<h4><%= name %> <span class="text-muted">(<%= year %>)</span></h4>
+						<p class="text-muted"><%= type %></p>
+						
+						<% if(info != '' || extra != '' || links != '' ){%>						
+							<hr>
+						<%}%>
+
+					<%}%>
+
+					<% if(info != '' || extra != '' || links != '' ){%>						
+
+						<!-- Info -->
+						<% if(info != ''){%>
+							<h5 class="text-muted">¿Qué se puede decir sobre esta pieza?</h5>
+							<ul class="text-muted"><%= info %></ul>
+						<%}%>
+
+						<!-- Extra -->
+						<% if(extra != ''){%>
+							<h5 class="text-muted">Más información</h5>
+							<ul class="text-muted"><%= extra %></ul>
+						<%}%>
+
+						<!-- Links -->
+						<% if(links != ''){%>
+							<h5 class="text-muted">Links</h5>
+							<ul class="text-muted"><%= links %></ul>
+						<%}%>
+
+					<%}%>
+
+				</div>
+
+			</div>
+
+			<!-- Image -->
+			<div class="col-md-6" id="id_imageColumn">
+				<figure>	
+					<img src="assets/images/game/<%= filename %>"/>
+				</figure>
+			</div>
+
+		</div>	
+
+	</div>	
+
+</div>
+
+<div id="id_savingMask" class="loading text-center" style="display:none;">
+	<div>
+		<div class="h4">Guardando, por favor espere...</div>
+	</div>
+</div>

@@ -29,6 +29,10 @@ define([
 
 		initialize: function(options){
 
+			// Toggle footer nav link
+			$('#footer-nav .study').show();
+			$('#footer-nav .game').hide();
+
 			// If `id` on `options`
 			if( !_.isUndefined( options ) ){
 
