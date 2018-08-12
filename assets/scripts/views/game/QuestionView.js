@@ -17,7 +17,7 @@ define([
 		parentView: null,
 
 		events: {
-			"click #id_getAnswerButton": "onGetAnswerButtonClicked", 
+			"click #id_getAnswerButton": "onAnswerButtonClicked", 
 			"click #id_noAnswerButton": "onNoAnswerButtonClicked",
 			"keyup #id_userAnswer": "checkKeyUp",
 		},
@@ -73,16 +73,37 @@ define([
 
 		},
 
+		onAnswerButtonClicked: function(){
+
+			mixpanel.track("Check answer - Button");
+
+			this.getAnswer();
+
+		},
+
+		onNoAnswerButtonClicked: function(){
+
+			mixpanel.track("Don't know answer");
+
+			this.model.set('userAnswer','=(');
+
+			this.getAnswer();
+		},
+
 		checkKeyUp: function(event){
 		
 			// If "Enter" key
 			if(event.keyCode == 13){
-				this.onGetAnswerButtonClicked();
+
+				mixpanel.track("Check answer - Enter");
+
+				this.getAnswer();
+
 			}
 
 		},
 
-		onGetAnswerButtonClicked: function(){
+		getAnswer: function(){
 
 			// If Model id valid
 			if(this.model.isValid(true)){
@@ -95,12 +116,6 @@ define([
 
 			}
 
-		},
-
-		onNoAnswerButtonClicked: function(){
-			this.model.set('userAnswer','=(');
-
-			this.onGetAnswerButtonClicked();
 		},
 
 		showAnswer: function(){
@@ -138,6 +153,8 @@ define([
 
 			// If "answer" is equal to "userAnswer" or if "valid" is true, User Answer is OK.
 			if( answer === userAnswer || valid ){
+
+				mixpanel.track("Get answer");
 
 				// Update Correct Answer
 				var updateCorrectAnswer = this.parentView.model.get('correct') + 1;

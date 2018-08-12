@@ -130,6 +130,14 @@ define([
 
 		finishGame: function(){
 
+			mixpanel.track("Finish Game", {
+				"answered": this.model.get('actual'),
+				"total": this.model.get('total'),
+				"total_perc": Math.round( ((this.model.get('actual')*100)/this.model.get('total')) * 10) / 10 +'%',
+				"correct": this.model.get('correct'),
+				"wrong": this.model.get('wrong')
+			});
+
 			// Compile template
 			var compiledTemplate = _.template( resultsTemplate );
 			
@@ -146,6 +154,7 @@ define([
 		},
 
 		reloadPage: function(){
+			mixpanel.track("Try Again");
 			location.reload();
 		},
 

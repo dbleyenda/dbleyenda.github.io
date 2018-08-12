@@ -11,6 +11,10 @@ define([
 
 		el: "#id_footer",
 
+		events: {
+			'click #portfolio': 'trackPortfolio'
+		},
+
 		initialize: function(){
 			this.render()
 		},
@@ -24,6 +28,10 @@ define([
 			this.$el.html( compiledTemplate );
 
 		},
+
+		trackPortfolio: function(){
+			mixpanel.track("Portfolio");
+		}
 
 	});
 	
