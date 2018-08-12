@@ -47,7 +47,7 @@ define([
 				}
 			}
 
-			console.log(this.userData);
+			//console.log(this.userData);
 
 			// Show Loading
 			this.mask('#id_loadingMask', 'show');

@@ -1,14 +1,7 @@
-<div class="row">
-
-	<!-- Image -->
-	<div class="col-md-6" id="id_imageColumn">
-		<figure>	
-			<img src="assets/images/game/<%= filename %>"/>
-		</figure>
-	</div>
+<div class="row game">
 
 	<!-- Form -->
-	<div class="col-md-6" id="id_formColumn">		
+	<div class="col-md-6 col-md-push-6" id="id_formColumn">		
 
 		<header>
 			<h1>Memorizate ésta.</h1>
@@ -18,13 +11,13 @@
 		<hr>
 
 		<div class="row" id="id_statusRow">
-			<div class="col-md-7">
+			<div class="col-sm-7 col-md-12 col-lg-7">
 				<p class="text-muted">
 					<span id="id_questionStatus">Pregunta <strong><% var showActual = actual + 1; %><%= showActual %></strong> de <strong><%= total %></strong> (<%= Math.round( ((actual*100)/total) * 10) / 10 %>%)</span>
 					<a class="text-danger" id="id_quitButton" title="Terminar juego">Terminar juego</a>
 				</p>
 			</div>
-			<div class="col-md-5 text-right">
+			<div class="col-sm-5 col-md-12 col-lg-5 answers-cell text-right">
 				<p class="text-muted">Respuestas: 
 					<span class="text-success icon-answer"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <strong data-bind="text:correct"><%= correct %></strong></span>
 					<span class="text-danger icon-answer"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <strong data-bind="text:wrong"><%= wrong %></strong></span>
@@ -39,7 +32,7 @@
 
 		<div class="form-group">
 			<label for="id_userAnswer">Escribe el nombre y/o apellido del autor de la pieza:</label>
-			<input type="text" class="form-control" name="userAnswer" id="id_userAnswer" placeholder="Ésta pieza es de..." data-bind="value:userAnswer,events:['keyup']" />
+			<input type="text" class="form-control" name="userAnswer" id="id_userAnswer" placeholder="Ésta pieza es de..." data-bind="value:userAnswer,events:['keyup']" autocomplete="off" />
 		</div>
 
 		<div class="row" id="id_buttonsRow">
@@ -53,7 +46,7 @@
 			
 			<div class="row">
 
-				<div class="col-md-9">
+				<div class="col-sm-8 col-lg-9">
 
 					<!-- Ok Message -->
 					<p class="h5 bg-success ok" style="display:none;"><span class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span> ¡Bien! ¡Le pegaste!</p>
@@ -63,7 +56,7 @@
 
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-sm-4 col-lg-3">
 
 					<!-- Next Button -->
 					<p class="h5"><button class="btn btn-primary btn-block" id="id_nextButton" title="Continuar">Continuar <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button></p>
@@ -75,13 +68,23 @@
 			<hr>
 			
 			<!-- Correct Answer -->
-			<p class="result h4">La respuesta correcta es: <strong><%= answer %></strong> <span class="text-muted"><% if(birth_death != ""){%>(<%= birth_death %>)<%}%></span></p>
+			<p class="result h4">La respuesta correcta es: <span class="br"><strong><%= answer %></strong> <span class="text-muted"><% if(birth_death != ""){%>(<%= birth_death %>)<%}%></span></span></p>
+
+			<!-- Image -->
+			<div class="image">
+				<hr>
+				<figure>	
+					<img src="assets/images/game/<%= filename %>"/>
+				</figure>
+			</div>
 
 			<!-- Name -->
 			<% if(name != '' || year != '' || type != '' ){%>
+			<div class="name">
 				<hr>
 				<h4><%= name %> <span class="text-muted">(<%= year %>)</span></h4>
 				<p class="text-muted"><%= type %></p>
+			</div>
 			<%}%>
 
 			<% if(info != '' || extra != '' || links != '' ){%>
@@ -109,6 +112,13 @@
 
 		</div>
 
+	</div>
+
+	<!-- Image -->
+	<div class="col-md-6 col-md-pull-6" id="id_imageColumn">
+		<figure>	
+			<img src="assets/images/game/<%= filename %>"/>
+		</figure>
 	</div>
 
 </div>

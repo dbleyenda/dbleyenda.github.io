@@ -125,6 +125,7 @@ define([
 			this.$el.find('#id_getAnswerButton').hide();
 			this.$el.find('#id_userAnswer').attr('disabled', 'disabled');
 			this.$el.find('#id_answerContainer').show();
+			this.$el.find('.row.game').addClass('answered');
 
 			// Make Focus on Continue button
 			this.$el.find('#id_nextButton').focus();
@@ -174,6 +175,11 @@ define([
 				
 				// Show Wrong Message
 				this.$el.find("#id_answerContainer .wrong").show();
+
+				// Log wrong answer
+				var wrongAnsweredArray = this.parentView.model.get('wrong_answered');
+				wrongAnsweredArray.push(this.model.toJSON());
+				this.parentView.model.set('wrong_answered',wrongAnsweredArray);
 
 			}
 

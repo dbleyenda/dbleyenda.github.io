@@ -22,12 +22,12 @@
 
 				</div>
 				
-				<p>Pasalo a tus compañeros, es más divertido estudiar jugando. Y si te gusto, ¡compartilo!</p>
+				<p>Pasalo a tus compañeros, es más divertido estudiar jugando. <span class="br">Y si te gusto, ¡compartilo!</span></p>
 
 			</div>
 			<div class="modal-footer">
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-sm-8">
 						<div class="share">
 
 							<!-- Twitter -->
@@ -43,11 +43,54 @@
 
 						</div>
 					</div>
-					<div class="col-md-4 text-right">
+					<div class="col-sm-4 text-right">
 						<button id="id_tryAgain" class="btn btn-primary" title="Intentar de nuevo">Intentar de nuevo</button>
 					</div>
 				</div>
 			</div>
+
+			<% if(wrong_answered.length > 0){ %>
+
+			<div class="wrong-answers">
+				<hr>
+				<div class="results">
+					<h5>Esto es en lo que te equivocaste:</h5>
+					<div class="auto-scroll">
+						<table class="table table-responsive">
+							<thead>
+								<tr>
+									<th>Pieza</th>
+									<th>Respuesta correcta</th>
+									<th>Tu Respuesta</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0;i<wrong_answered.length;i++){ %>
+								<tr>
+									<td><img src="assets/images/game/<%= wrong_answered[i].filename %>"/></td>
+									<td><span class="text-success icon-answer"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <strong><%= wrong_answered[i].answer %></strong> </span></td>
+									<td>
+										<% if(wrong_answered[i].userAnswer != '=('){ %>
+											<span class="text-danger icon-answer"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <strong><%= wrong_answered[i].userAnswer %></strong> </span> 
+										<% } %>	
+									</td>
+								</tr>	
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<% if(wrong_answered.length > 5){ %>
+				<hr>
+				<div class="buttons text-right">
+					<button id="id_tryAgain" class="btn btn-primary" title="Intentar de nuevo">Intentar de nuevo</button>
+				</div>
+				<% } %>
+
+			</div>
+			<% } %>
+		
 		</div>
 	</div>
 </div>

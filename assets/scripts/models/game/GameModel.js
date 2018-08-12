@@ -11,7 +11,8 @@ define([
 			actual: 0,
 			correct: 0,
 			total: 0,
-			wrong: 0
+			wrong: 0,
+			wrong_answered: []
 		}
 
 	});

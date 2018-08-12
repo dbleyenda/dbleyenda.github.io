@@ -53,7 +53,15 @@ define([
 					var shuffledAnswers = _.shuffle( this.collection.toJSON() );
 
 					// Change id from shuffled answers to reset collection properly.
-					_.each( shuffledAnswers, function(value, index){ value.id = index; });
+					_.each( shuffledAnswers, function(value, index){ 
+
+						// Keep DB id for reference
+						value.db_id = value.id; 
+
+						// Set new ID in order to shuffle
+						value.id = index; 
+						
+					});
 
 					// Reset collection with shuffled answers
 					this.collection.reset( shuffledAnswers, {silent:true} );
